@@ -53,11 +53,15 @@
 
       <!-- Login  -->
       <div id="idLogin" class="modal">
-      <form class="modal-content animate" id = "loginForm"  action="discout.html">
+        <form
+          class="modal-content animate"
+          id="loginForm"
+          action="discout.html"
+        >
           <div class="containerLogin">
             <label for="userEmail"><b>Email</b></label>
             <input
-            type="text"
+              type="text"
               id="uEmail"
               placeholder="Enter email"
               name="userEmail"
@@ -74,7 +78,12 @@
               required
             />
             <span id="loginMessage"></span>
-            <button class="buttonLogin" onclick="login()"  id="loginBtn" disabled="disabled">
+            <button
+              class="buttonLogin"
+              onclick="login()"
+              id="loginBtn"
+              disabled="disabled"
+            >
               Login
             </button>
             <!--    <label><input type="checkbox" checked="checked" name="remember"> Remember me</label> -->
@@ -90,12 +99,16 @@
             </button>
             <span class="psw">Forgot <a href="#">password?</a></span>
           </div>
-       </form>  
+        </form>
       </div>
 
       <!-- Registar  -->
       <div id="idRegistar" class="modal">
-    <form class="modal-content animate" id="registerForm" action="index.html">  
+        <form
+          class="modal-content animate"
+          id="registerForm"
+          action="index.html"
+        >
           <div class="containerLogin">
             <label for="newUser"><b>Username</b></label>
             <input
@@ -153,8 +166,25 @@
               required
             />
 
+            <label for="eq1"><b> Equipa 1 Favorita </b> </label>
+            <select name="Equipa" id="equipa1">
+              <option> Escolher equipa se pretender </option>
+              <option> Sacavenense </option>
+              <option> Real </option>
+              <option> Belenenses </option>
+              <option> V. Setúbal </option>
+              <option> Padroense </option>
+              <option> Boavista </option>
+            </select>
+
             <span id="registerMessage"></span>
-            <button type="submit" class="buttonLogin"  id="registerBtn" disabled="disabled" onclick="register()">
+            <button
+              type="submit"
+              class="buttonLogin"
+              id="registerBtn"
+              disabled="disabled"
+              onclick="register()"
+            >
               Registar
             </button>
           </div>
@@ -168,7 +198,7 @@
               Cancel
             </button>
           </div>
-         </form> 
+        </form>
       </div>
     </div>
   </body>
