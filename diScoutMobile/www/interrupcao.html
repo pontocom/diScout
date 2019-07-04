@@ -25,45 +25,66 @@
         <div class="col-sm-12" style="margin-bottom: 10px;">
           <div class="pull-left">
             <button
-              onclick="changePasse()"
-              id="Passe"
+              onclick="faltaSofrida()"
+              id="faltaSof"
               style="width: 200px; margin-right: 10px;"
               class="bg-success "
             >
-              Passe
+              Falta sofrida
             </button>
           </div>
           <div class="">
             <button
-              onclick="changePerda()"
-              id="Perda"
+              onclick="linhaLateralSofrida()"
+              id="linhaLateralSof"
               style="width: 200px; margin-right: 10px;"
               class="bg-success"
             >
-              Perda de Bola
+            Bola Fundo Lateral Sofrida
+            </button>
+          </div>
+          <div class="">
+            <button
+              onclick="linhaFinalSofrida()"
+              id="linhaFinalSof"
+              style="width: 200px; margin-right: 10px;"
+              class="bg-success"
+            >
+              Bola Fundo Linha Final Sofrida
             </button>
           </div>
         </div>
         <div class="col-sm-12">
           <div class="pull-left">
             <button
-              onclick="changeInterrupcao()"
-              id="Interrupcao"
+              onclick="faltaCometida()"
+              id="faltaComet"
               style="width: 200px; margin-right: 10px;"
               class="bg-success"
             >
-              Interrupção
+              Falta Cometida
             </button>
           </div>
           <div class="">
             <button
-              onclick="changeRemate()"
-              id="Remate"
+              onclick="linhaLateralCometida()"
+              id="linhaLateralCom"
               style="width: 200px; margin-right: 10px;"
               class="bg-success"
             >
-              Remate
+            Bola Fundo Lateral Cometida
             </button>
+          </div>
+          <div class="">
+            <button
+              onclick="linhaFinalCometida()"
+              id="linhaFinalComet"
+              style="width: 200px; margin-right: 10px;"
+              class="bg-success"
+            >
+              Bola Fundo Linha Final Cometida
+            </button>
+            <!-- <input onclick="changeBolaFundoCometida()" class="twoButtons" type="button" id="BolaFundoCometida" value="Bola Fundo Linha Final Cometida" style="display: none" /> -->
           </div>
         </div>
       </div>
