@@ -1,0 +1,1 @@
+Este ficheiro conterá informação específica sobre a parte de desenvolvimento da aplicação mobile.

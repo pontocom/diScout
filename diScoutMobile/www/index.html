@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+    <style>
+
+        @media(orientation: landscape) {}
+
+        .container{
+            /*  margin: 20px auto; */
+
+            background-color:transparent;
+            grid-template-columns: 200px 200px;
+            /* grid-row: auto auto; */
+            grid-column-gap: 20px; /* Separar os botões na vertical */ 
+            grid-row-gap: 20px; /* Separar os botões na horizontal */ 
+
+            display: grid;                       /* establish flex container */
+            flex-wrap: wrap;                     /* enable flex items to wrap */
+            justify-content: space-around;
+
+            /*    grid-template-columns: repeat(3, 1fr);  */
+
+        }
+
+        .twoButtons{
+            background-color: green;
+            /*   border: black; */
+            padding:20px; /* Altura do botão */
+            border-radius: 10px; /* Mete os cantos arredondados */
+
+            color:#fff;
+
+            align-items:center;
+            justify-content:center;
+            font-size:20px;
+            /*  grid-template-columns: repeat(2, 1fr);*/
+
+        }
+
+        .col-sm-12 {
+            display: flex;
+            align-items: center;
+            justify-content: center;  
+        }
+
+        .main h1{
+            font-style: normal;
+            color: white;
+        }
+
+
+    </style>
+
+    <head>
+        <meta charset="utf-8" />
+
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+        <title> Discout </title>
+
+        <script> 
+
+            function changePasse() {
+
+                if(document.getElementById("Passe").innerText=="Falta Sofrida"){
+
+                    /*    document.getElementById("painel").style="grid-template-columns: repeat(2, 1fr)"; */
+                    document.getElementById("Passe").innerText="Passe";
+                    document.getElementById("Perda").innerText="Perda de Bola";
+                    document.getElementById("BolaFundoSofrida").className="d-lg-none";
+                    document.getElementById("Interrupcao").innerText="Interrupção";
+                    document.getElementById("Remate").innerText="Remate";
+                    document.getElementById("BolaFundoCometida").className="d-lg-none";
+                    return
+
+                }
+
+                if(document.getElementById("Passe").innerText == "Interrupção") {
+
+                    /*     document.getElementById("painel").style="grid-template-columns: repeat(3, 1fr)"; */
+                    document.getElementById("Passe").innerText="Falta Sofrida";
+                    document.getElementById("Perda").innerText="Bola Fundo Lateral Sofrida";
+
+                    document.getElementById("BolaFundoSofrida").className="d-block bg-success"; 
+                    document.getElementById("BolaFundoSofrida").style.width="200px";
+                    document.getElementById("BolaFundoSofrida").style.marginRight="10px";
+
+                    document.getElementById("Interrupcao").innerText="Falta Cometida";
+                    document.getElementById("Interrupcao").className="d-block bg-success";
+                    document.getElementById("Interrupcao").disabled=false;
+
+                    document.getElementById("Remate").innerText="Bola Fundo Lateral Cometida";
+                    document.getElementById("Remate").className="d-block bg-success";
+                    document.getElementById("Remate").disabled=false;
+                    document.getElementById("BolaFundoCometida").className="d-block bg-success";
+                    return
+
+                }
+
+                document.getElementById("Passe").innerText="Passe";
+                document.getElementById("Perda").innerText="Perda de Bola";
+                document.getElementById("Interrupcao").innerText="Interrupção";
+                document.getElementById("Remate").innerText="Remate";
+            }
+
+            function changeRemate() {
+
+                if(document.getElementById("Remate").innerText == "Bola Fundo Lateral Cometida") {
+
+                    /*  document.getElementById("painel").style="grid-template-columns: repeat(2, 1fr)"; */
+                    document.getElementById("Passe").innerText="Interrupção";
+                    document.getElementById("Perda").innerText="Recuperou a Bola";
+                    document.getElementById("BolaFundoSofrida").className="d-lg-none";
+                    document.getElementById("Interrupcao").className="d-lg-none";
+                    document.getElementById("Interrupcao").disabled=true;
+                    document.getElementById("Remate").className="d-lg-none";
+                    document.getElementById("Remate").disabled=true;
+                    document.getElementById("BolaFundoCometida").className="d-lg-none";
+                    return
+                }
+
+                document.getElementById("Passe").innerText="À baliza";
+                document.getElementById("Passe").disabled=true;
+                document.getElementById("Perda").innerText="Para Fora";
+                document.getElementById("Interrupcao").innerText="Bola Parada";
+                document.getElementById("Interrupcao").disabled=true;
+                document.getElementById("Remate").innerText="Intercetado";
+                document.getElementById("Remate").disabled=true;
+            }
+
+            function changePerda() {
+
+                if(document.getElementById("Perda").innerText =="Recuperou a Bola"){
+
+                    document.getElementById("Passe").innerText="Passe";
+                    document.getElementById("Perda").innerText="Perda de Bola";
+                    document.getElementById("Interrupcao").innerText="Interrupção";
+                    document.getElementById("Interrupcao").className="d-block bg-success";
+                    document.getElementById("Interrupcao").disabled=false;
+                    document.getElementById("Remate").innerText="Remate";
+                    document.getElementById("Remate").className="d-block bg-success";
+                    document.getElementById("Remate").disabled=false;
+                    return
+
+                }
+
+                if(document.getElementById("Perda").innerText =="Bola Fundo Lateral Sofrida"){
+
+                    /* document.getElementById("painel").style="grid-template-columns: repeat(2, 1fr)"; */
+                    document.getElementById("Passe").innerText="Passe";
+                    document.getElementById("Perda").innerText="Perda de Bola";
+                    document.getElementById("BolaFundoSofrida").className="d-lg-none";
+                    document.getElementById("Interrupcao").innerText="Interrupção";
+                    document.getElementById("Remate").innerText="Remate";
+                    document.getElementById("BolaFundoCometida").className="d-lg-none";
+                    return
+
+                }
+
+                if(document.getElementById("Perda").innerText=="Para Fora"){
+
+                    document.getElementById("Passe").innerText="Interrupção";
+                    document.getElementById("Passe").disabled=false;
+                    document.getElementById("Perda").innerText="Recuperou a Bola";
+                    document.getElementById("Perda").disabled=false;
+                    document.getElementById("Interrupcao").className="d-lg-none";
+                    document.getElementById("Remate").className="d-lg-none";
+                    return
+                }
+
+                document.getElementById("Passe").innerText="Interrupção";
+                document.getElementById("Perda").innerText="Recuperou a Bola";
+                document.getElementById("Interrupcao").className="d-lg-none";
+                document.getElementById("Interrupcao").disabled=true;
+                document.getElementById("Remate").className="d-lg-none";
+                document.getElementById("Remate").disabled=true;
+            }
+
+            function changeInterrupcao() {
+
+                if(document.getElementById("Interrupcao").innerText == "Falta Cometida") {
+
+                    document.getElementById("Passe").innerText="Interrupção";
+                    document.getElementById("Perda").innerText="Recuperou a Bola";
+                    document.getElementById("BolaFundoSofrida").className="d-lg-none";
+                    document.getElementById("Interrupcao").className="d-lg-none";
+                    document.getElementById("Interrupcao").disabled=true;
+                    document.getElementById("Remate").className="d-lg-none";
+                    document.getElementById("Remate").disabled=true;
+                    document.getElementById("BolaFundoCometida").className="d-lg-none";
+                    return
+
+                } 
+
+                document.getElementById("Passe").innerText="Falta Sofrida";
+
+                document.getElementById("Perda").innerText="Bola Fundo Lateral Sofrida";
+                document.getElementById("BolaFundoSofrida").className="bg-success btn-xs col-lg-12"; 
+
+                document.getElementById("Interrupcao").innerText="Falta Cometida";
+                document.getElementById("Remate").innerText="Bola Fundo Lateral Cometida";
+
+                document.getElementById("BolaFundoCometida").className="bg-success btn-xs col-lg-12";
+
+
+            }
+
+            function changeBolaFundoSofrida() {
+
+                document.getElementById("Passe").innerText="Passe";
+                document.getElementById("Perda").innerText="Perda de Bola";
+                document.getElementById("BolaFundoSofrida").className="d-lg-none";
+                document.getElementById("Interrupcao").innerText="Interrupção";
+                document.getElementById("Remate").innerText="Remate";
+                document.getElementById("BolaFundoCometida").className="d-lg-none";
+
+            }
+
+            function changeBolaFundoCometida() {
+
+                document.getElementById("Passe").innerText="Interrupção";
+                document.getElementById("Perda").innerText="Recuperou a Bola";
+                document.getElementById("BolaFundoSofrida").className="d-lg-none";
+                document.getElementById("Interrupcao").className="d-lg-none";
+                document.getElementById("Interrupcao").disabled=true;
+                document.getElementById("Remate").className="d-lg-none";
+                document.getElementById("Remate").disabled=true;
+                document.getElementById("BolaFundoCometida").className="d-lg-none";
+
+            }
+
+        </script>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    </head>
+
+    <body style= "background: url(https://ae01.alicdn.com/kf/HTB1SajMSpXXXXc8XVXXq6xXFXXXz/8x8FT-Spots-Luz-Night-Time-de-Futebol-Campo-de-Futebol-Est-dio-Plataforma-Sob-Encomenda-Da.jpg_640x640.jpg); background-size: cover">
+
+        <div align="center" class="main">
+
+            <h1> Discout</h1>
+            <!--
+<div class="container" align="center" id="painel"   >
+
+<input onclick="changePasse()" class="twoButtons" type="button" id="Passe" value="Passe" />
+<input onclick="changePerda()" class="twoButtons" type="button" id="Perda" value="Perda de Bola" />
+<input onclick="changeBolaFundoSofrida()" class="twoButtons" type="button" id="BolaFundoSofrida" value="Bola Fundo Linha Final Sofrida"   style="display: none"  />
+<input onclick="changeInterrupcao()" class="twoButtons" type="button" id="Interrupcao" value="Interrupção"  />
+<input onclick="changeRemate()" class="twoButtons" type="button" id="Remate" value="Remate"  />           
+<input onclick="changeBolaFundoCometida()" class="twoButtons" type="button" id="BolaFundoCometida" value="Bola Fundo Linha Final Cometida" style="display: none" />
+
+
+</div> 
+-->   
+            <div class="row ">
+                <div class="col-sm-12" style="margin-bottom: 10px;">
+                    <div class="pull-left">
+                        <button  onclick="changePasse()" id="Passe" style="width: 200px; margin-right: 10px;" class="bg-success ">Passe </button> 
+                    </div>
+                    <div class="">
+                        <button  onclick="changePerda()" id="Perda" style="width: 200px; margin-right: 10px;" class="bg-success"> Perda de Bola </button> 
+                    </div>
+                    <div class="">
+                        <button  onclick="changeBolaFundoSofrida()" id="BolaFundoSofrida" style="width: 200px; margin-right: 10px;" class="d-lg-none"> Bola Fundo Linha Final Sofrida </button> 
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="pull-left">
+                        <button  onclick="changeInterrupcao()" id="Interrupcao" style="width: 200px; margin-right: 10px;" class="bg-success"> Interrupção </button> 
+                    </div>
+                    <div class="">
+                        <button  onclick="changeRemate()" id="Remate" style="width: 200px; margin-right: 10px;" class="bg-success"> Remate </button> 
+                    </div>
+                    <div class="">
+                        <button onclick="changeBolaFundoCometida()" id="BolaFundoCometida" style="width: 200px; margin-right: 10px;" class="d-lg-none"> Bola Fundo Linha Final Cometida </button> 
+                    </div>
+                </div>
+                -->
+
+            </div>
+            </div>
+        
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/discout.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+        <script src="js/bootstrap.min.js"></script>
+
+    </body>
+
+</html>
