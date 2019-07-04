@@ -7,6 +7,7 @@ import uuid
 import jwt
 import configparser
 
+
 client_api = Blueprint('client_api', __name__)
 config = configparser.ConfigParser()
 config.read('config.ini')
