@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"
+    />
+    <title>Discout</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/discout.css" />
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    
+    <script type="text/javascript" src="js/discout.js"></script>
+  </head>
+  <body
+    style="background: url(https://ae01.alicdn.com/kf/HTB1SajMSpXXXXc8XVXXq6xXFXXXz/8x8FT-Spots-Luz-Night-Time-de-Futebol-Campo-de-Futebol-Est-dio-Plataforma-Sob-Encomenda-Da.jpg_640x640.jpg); background-size: cover"
+  >
+    <div align="center" class="main">
+      <h1>Discout</h1>
+      <div class="row ">
+        <div class="col-sm-12" style="margin-bottom: 10px;">
+          <div class="pull-left">
+            <button
+              onclick="changePasse()"
+              id="Passe"
+              style="width: 200px; margin-right: 10px;"
+              class="bg-success "
+            >
+              Passe
+            </button>
+          </div>
+          <div class="">
+            <button
+              onclick="changePerda()"
+              id="Perda"
+              style="width: 200px; margin-right: 10px;"
+              class="bg-success"
+            >
+              Perda de Bola
+            </button>
+          </div>
+          <div class="">
+            <button
+              onclick="changeBolaFundoSofrida()"
+              id="BolaFundoSofrida"
+              style="width: 200px; margin-right: 10px; display: none"
+              class="bg-success"
+            >
+              Bola Fundo Linha Final Sofrida
+            </button>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="pull-left">
+            <button
+              onclick="changeInterrupcao()"
+              id="Interrupcao"
+              style="width: 200px; margin-right: 10px;"
+              class="bg-success"
+            >
+              Interrupção
+            </button>
+          </div>
+          <div class="">
+            <button
+              onclick="changeRemate()"
+              id="Remate"
+              style="width: 200px; margin-right: 10px;"
+              class="bg-success"
+            >
+              Remate
+            </button>
+          </div>
+          <div class="">
+            <button
+              onclick="changeBolaFundoCometida()"
+              id="BolaFundoCometida"
+              style="width: 200px; margin-right: 10px; display: none"
+              class="bg-success"
+            >
+              Bola Fundo Linha Final Cometida
+            </button>
+            <!-- <input onclick="changeBolaFundoCometida()" class="twoButtons" type="button" id="BolaFundoCometida" value="Bola Fundo Linha Final Cometida" style="display: none" /> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
