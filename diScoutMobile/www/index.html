@@ -26,9 +26,6 @@
   <body
     style="background: url(https://ae01.alicdn.com/kf/HTB1SajMSpXXXXc8XVXXq6xXFXXXz/8x8FT-Spots-Luz-Night-Time-de-Futebol-Campo-de-Futebol-Est-dio-Plataforma-Sob-Encomenda-Da.jpg_640x640.jpg); background-size: cover"
   >
-    <!--     <script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="js/discout.js"></script> -->
-
     <div align="center" class="main">
       <h1>Discout</h1>
       <div class="center-block">
@@ -167,23 +164,14 @@
             />
 
             <label for="eq1"><b> Equipa 1 Favorita </b> </label>
-            <select name="Equipa" id="equipa1">
-              <option> Escolher equipa se pretender </option>
-              <option> Sacavenense </option>
-              <option> Real </option>
-              <option> Belenenses </option>
-              <option> V. Setúbal </option>
-              <option> Padroense </option>
-              <option> Boavista </option>
-            </select>
-
+            <select id="teamSelect"> </select>
+            <!-- disabled="disabled" -->
             <span id="registerMessage"></span>
             <button
               type="submit"
               class="buttonLogin"
               id="registerBtn"
-              disabled="disabled"
-              onclick="register()"
+              onclick="getTeam()"
             >
               Registar
             </button>
@@ -201,5 +189,34 @@
         </form>
       </div>
     </div>
+
+    <script type="text/javascript">
+      
+      /*
+      //Build an array containing Customer records.
+      var customers = [
+        { CustomerId: 1, Name: "John Hammond", Country: "United States" },
+        { CustomerId: 2, Name: "Mudassar Khan", Country: "India" },
+        { CustomerId: 3, Name: "Suzanne Mathews", Country: "France" },
+        { CustomerId: 4, Name: "Robert Schidner", Country: "Russia" }
+      ];
+
+      var ddlCustomers = document.getElementById("teamSelect");
+
+      //Add the Options to the DropDownList.
+      for (var i = 0; i < customers.length; i++) {
+        var option = document.createElement("OPTION");
+
+        //Set Customer Name in Text part.
+        option.innerHTML = customers[i].Name;
+
+        //Set CustomerId in Value part.
+        option.value = customers[i].CustomerId;
+
+        //Add the Option element to DropDownList.
+        ddlCustomers.options.add(option);
+      }
+      */
+    </script>
   </body>
 </html>

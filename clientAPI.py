@@ -243,6 +243,32 @@ def getGame(id):
     else:
         return jsonify({'status': False, 'message': 'The request was made from a non-authenticated client'}), 400
 
+@client_api.route('/update', methods=['POST'])
+def updateData():
+
+    data = request.values
+    headers = request.headers
+
+
+    clientID = ''
+    apiKey = ''
+
+    # used to validate id the headers are being passed or not
+    if all(header in headers for header in ("clientID", "apiKey")):
+        clientID = headers['clientID']
+        apiKey = headers['apiKey']
+    else:
+        print("HEADERS DO NOT EXIST")
+
+    # authenticate the clientID
+    if auth.authenticate_client(clientID, apiKey):
+        if config['GENERAL']['authentication'] == "ON":
+            try:
+                jwt.decode(headers['x-access-token'], config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
+            except jwt.exceptions.DecodeError:
+                return jsonify({'status': False, 'message': 'Invalid client token'}), 400
+            except jwt.exceptions.ExpiredSignature:
+                return jsonify({'status': False, 'message': 'Token has expired'}), 400
 
 '''
 @client_api.route('/game/<gameid>', methods=['GET'])
