@@ -123,6 +123,15 @@ def getTeam(id):
         return False
 
 
+def getAllTeams():
+    print("Getting all the teams")
+    cur = teams.find({})
+    ateams = []
+    for team in cur:
+        ateams.append(getTeam(team['uuid']))
+    return ateams
+
+
 def getSeason(id):
     print("Loading season ID from DB: " + id)
     season = seasons.find_one({'uuid': id})
