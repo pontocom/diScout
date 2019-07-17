@@ -280,11 +280,9 @@ def getGame(id):
 
 
 @client_api.route('/update', methods=['POST'])
-def updateData():
-
+def update():
     data = request.values
     headers = request.headers
-
 
     clientID = ''
     apiKey = ''
@@ -305,6 +303,9 @@ def updateData():
                 return jsonify({'status': False, 'message': 'Invalid client token'}), 400
             except jwt.exceptions.ExpiredSignature:
                 return jsonify({'status': False, 'message': 'Token has expired'}), 400
+    #blah blah blah
+    return jsonify({'status': True, 'action': data.action}), 201
+
 
 '''
 @client_api.route('/game/<gameid>', methods=['GET'])
