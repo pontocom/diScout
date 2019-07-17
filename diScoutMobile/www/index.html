@@ -53,7 +53,7 @@
         <form
           class="modal-content animate"
           id="loginForm"
-          action="discout.html"
+          action="chooseTeams.html"
         >
           <div class="containerLogin">
             <label for="userEmail"><b>Email</b></label>
@@ -99,13 +99,9 @@
         </form>
       </div>
 
-      <!-- Registar  -->
-      <div id="idRegistar" class="modal">
-        <form
-          class="modal-content animate"
-          id="registerForm"
-          action="index.html"
-        >
+      <!-- Registar   action="index.html"  -->
+      <div id="idRegistar" class="modal" class="select">
+        <form class="modal-content animate" id="registerForm">
           <div class="containerLogin">
             <label for="newUser"><b>Username</b></label>
             <input
@@ -163,15 +159,14 @@
               required
             />
 
-            <label for="eq1"><b> Equipa 1 Favorita </b> </label>
-            <select id="teamSelect"> </select>
-            <!-- disabled="disabled" -->
-            <span id="registerMessage"></span>
+            <p><span id="registerMessage"></span></p>
+
             <button
               type="submit"
               class="buttonLogin"
               id="registerBtn"
-              onclick="getTeam()"
+              disabled="disabled"
+              onclick="register()"
             >
               Registar
             </button>
@@ -189,34 +184,5 @@
         </form>
       </div>
     </div>
-
-    <script type="text/javascript">
-      
-      /*
-      //Build an array containing Customer records.
-      var customers = [
-        { CustomerId: 1, Name: "John Hammond", Country: "United States" },
-        { CustomerId: 2, Name: "Mudassar Khan", Country: "India" },
-        { CustomerId: 3, Name: "Suzanne Mathews", Country: "France" },
-        { CustomerId: 4, Name: "Robert Schidner", Country: "Russia" }
-      ];
-
-      var ddlCustomers = document.getElementById("teamSelect");
-
-      //Add the Options to the DropDownList.
-      for (var i = 0; i < customers.length; i++) {
-        var option = document.createElement("OPTION");
-
-        //Set Customer Name in Text part.
-        option.innerHTML = customers[i].Name;
-
-        //Set CustomerId in Value part.
-        option.value = customers[i].CustomerId;
-
-        //Add the Option element to DropDownList.
-        ddlCustomers.options.add(option);
-      }
-      */
-    </script>
   </body>
 </html>

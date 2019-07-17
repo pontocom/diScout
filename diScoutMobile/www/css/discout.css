@@ -15,6 +15,10 @@
   /*    grid-template-columns: repeat(3, 1fr);  */
 }
 
+.selectTeam {
+  color: #fff;
+}
+
 .twoButtons {
   background-color: green;
   /*   border: black; */
