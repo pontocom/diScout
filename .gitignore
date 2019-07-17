@@ -109,3 +109,4 @@ diScoutMobile/hooks
 diScoutMobile/platforms
 diScoutMobile/plugins
 .idea/
+.idea/mongoSettings.xml

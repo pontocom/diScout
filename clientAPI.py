@@ -73,7 +73,7 @@ def registration():
             _UUID = str(uuid.uuid4())
             currDate = datetime.datetime.now()
             user = {'uuid': _UUID, 'name': data['name'], 'email': data['email'], 'password': password,
-                    'description': data['description'], 'type': data['type'], 'createdAt': str(currDate),
+                    'description': data['description'], 'type': data['type'], 'favTeam': data['favTeam'], 'createdAt': str(currDate),
                     'modifiedAt': str(currDate)}
             if db.insertIntoCollection("users", user):
                 return jsonify({'status': True, 'userId': _UUID}), 201
