@@ -22,6 +22,7 @@ users = diDatabase["users"]
 application = diDatabase["applications"]
 players = diDatabase["players"]
 seasons = diDatabase["seasons"]
+stats = diDatabase["stats"]
 
 
 def insertApplication(app):
@@ -90,6 +91,25 @@ def insertIntoCollection(collectionName, document):
     else:
         return diDatabase[collectionName].insert_one(document)
 
+def getStat(id):
+    stat = stats.find_one({'uuid': id})
+    if stat is not None:
+        _stat = {'uuid': stat['uuid'],
+                 'passe': stat['passe'],
+                 'remate': stat['remate'],
+                 'paraFora': stat['paraFora'],
+                 'recuperacaoDeBola': stat['recuperacaoDeBola'],
+                 'perdaDeBola': stat['perdaDeBola'],
+                 'faltaSofrida': stat['faltaSofrida'],
+                 'bolaFundoLateralSofrida': stat['bolaFundoLateralSofrida'],
+                 'bolaFundoLinhaFinalSofrida': stat['bolaFundoLinhaFinalSofrida'],
+                 'faltaCometida': stat['faltaCometida'],
+                 'bolaFundoLateralCometida': stat['bolaFundoLateralCometida'],
+                 'bolaFundoLinhaFinalCometida': stat['bolaFundoLinhaFinalCometida']}
+
+        return _stat
+    else:
+        return None
 
 def getPlayer(id):
     player = players.find_one({'uuid': id})
@@ -142,6 +162,14 @@ def getSeason(id):
         return _season
     else:
         return False
+
+def getStatsFromPlayers(playerId):
+    cur = stats.find({'PlayerId': playerId})
+    tstats = []
+    for stat in cur:
+        tstats.append(getStat(stat['uuid']))
+    return tstats
+
 
 
 def getPlayersFromTeam(teamId):

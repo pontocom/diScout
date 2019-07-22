@@ -24,7 +24,8 @@ function register() {
       email: document.getElementById("rEmail").value,
       password: document.getElementById("nPsw").value,
       description: document.getElementById("desc").value,
-      type: document.getElementById("tipo").value
+      type: document.getElementById("tipo").value,
+      favTeam: ""
     }),
     success: function(data) {
       alert(JSON.stringify(data));
@@ -140,7 +141,7 @@ function confirmFavTeams() {
     type: "PUT",
     data: $.param({
       email: document.getElementById("uEmail").value,
-      favteams: selectedTeams
+      favTeams: selectedTeams
     }),
     success: function(data) {
       alert(JSON.stringify(data));

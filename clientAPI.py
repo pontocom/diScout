@@ -7,7 +7,6 @@ import uuid
 import jwt
 import configparser
 
-
 client_api = Blueprint('client_api', __name__)
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -73,7 +72,8 @@ def registration():
             _UUID = str(uuid.uuid4())
             currDate = datetime.datetime.now()
             user = {'uuid': _UUID, 'name': data['name'], 'email': data['email'], 'password': password,
-                    'description': data['description'], 'type': data['type'], 'favTeam': data['favTeam'], 'createdAt': str(currDate),
+                    'description': data['description'], 'type': data['type'], 'favTeam': data['favTeam'],
+                    'createdAt': str(currDate),
                     'modifiedAt': str(currDate)}
             if db.insertIntoCollection("users", user):
                 return jsonify({'status': True, 'userId': _UUID}), 201
@@ -187,7 +187,13 @@ def getPlayer(id):
 
         player = db.getPlayer(id)
         if player:
-            return jsonify({'status': True, 'player': player}), 200
+            stats = db.getStatsFromPlayers(id)
+            if stats:
+                fullPlayer = {'info': player, 'stats': stats}
+                return jsonify({'status': True, 'team': fullPlayer}), 200
+            else:
+                return jsonify({'info': player, 'status': False, 'message': 'Player without any stats registered.'}), 400
+
         else:
             return jsonify({'status': False, 'message': 'Unable to get player.'}), 400
     else:
@@ -225,8 +231,6 @@ def getAllTeams():
             return jsonify({'status': False, 'message': 'No teams available????'}), 400
     else:
         return jsonify({'status': False, 'message': 'The request was made from a non-authenticated client'}), 400
-
-
 
 
 @client_api.route('/user/<id>/statistics', methods=['GET'])
@@ -303,8 +307,24 @@ def update():
                 return jsonify({'status': False, 'message': 'Invalid client token'}), 400
             except jwt.exceptions.ExpiredSignature:
                 return jsonify({'status': False, 'message': 'Token has expired'}), 400
-    #blah blah blah
-    return jsonify({'status': True, 'action': data.action}), 201
+
+        _UUID = str(uuid.uuid4())
+        currDate = datetime.datetime.now()
+        stat = {'uuid': _UUID, 'passe': data['passe'], 'remate': data['remate'], 'paraFora': data['paraFora'],
+                'recuperacaoDeBola': data['recuperacaoDeBola'], 'perdaDeBola': data['perdaDeBola'],
+                'faltaSofrida': data['faltaSofrida'],
+                'bolaFundoLateralSofrida': data['bolaFundoLateralSofrida'],
+                'bolaFundoLinhaFinalSofrida': data['bolaFundoLinhaFinalSofrida'],
+                'faltaCometida': data['faltaCometida'], 'bolaFundoLateralCometida': data['bolaFundoLateralCometida'],
+                'bolaFundoLinhaFinalCometida': data['bolaFundoLinhaFinalCometida'],
+                'PlayerId': data['playerId'], 'createdAt': str(currDate), 'modifiedAt': str(currDate)}
+
+        if db.insertIntoCollection("stats", stat):
+            return jsonify({'status': True, 'statId': _UUID}), 201
+        else:
+            return jsonify({'status': False, 'message': 'There was an error adding stats.'}), 400
+    else:
+        return jsonify({'status': False, 'message': 'The request was made from a non-authenticated client'}), 400
 
 
 '''
