@@ -40,6 +40,11 @@ function register() {
 
 //Login
 function login() {
+  var body = {
+    email: document.getElementById("uEmail").value,
+    password: document.getElementById("uPsw").value
+  };
+
   $.ajax({
     url: "http://" + basePath + "/user/auth",
 
@@ -49,16 +54,19 @@ function login() {
       "Content-Type": "application/x-www-form-urlencoded"
     },
     type: "POST",
-    data: $.param({
-      email: document.getElementById("uEmail").value,
-      password: document.getElementById("uPsw").value
-    }),
-    success: function(data) {
-      alert(JSON.stringify(data));
-      //document.getElementById("loginForm").setAttribute("action", "discout.html");
+    data: body,
+    success: function(result) {
+      //alert(JSON.stringify(result));
+      //alert(result);
+      
+      if (result.data === true) {
+        window.location.replace("chooseFavTeams.html");
+      } else {
+        window.location.replace("chooseTeam.html");
+      }
     },
-    error: function(data) {
-      alert(JSON.stringify(data));
+    error: function(result) {
+      alert(JSON.stringify(result));
     }
   });
 }
@@ -106,7 +114,7 @@ function getAllTeams(select) {
       ) {
         if (select.id == ts1.id) {
           document.getElementById(ts2.id).disabled = false;
-          document.getElementById("confirmTeam").disabled=false;
+          document.getElementById("confirmTeam").disabled = false;
         } else if (select.id == ts2.id) {
           document.getElementById(ts3.id).disabled = false;
         }
@@ -144,8 +152,9 @@ function confirmFavTeams() {
       favTeams: selectedTeams
     }),
     success: function(data) {
-      alert(JSON.stringify(data));
-      //document.getElementById("loginForm").setAttribute("action", "discout.html");
+      //alert(JSON.stringify(data));
+      window.location.replace("chooseTeam.html");
+     // document.write("LLLLLLLLLLL");
     },
     error: function(data) {
       alert(JSON.stringify(data));

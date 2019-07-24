@@ -11,6 +11,38 @@ client_api = Blueprint('client_api', __name__)
 config = configparser.ConfigParser()
 config.read('config.ini')
 
+@client_api.route('/favTeams', methods=['PUT'])
+def favTeams():
+    data = request.values
+    headers = request.headers
+
+    clientID = ''
+    apiKey = ''
+
+    # used to validate id the headers are being passed or not
+    if all(header in headers for header in ("clientID", "apiKey")):
+        clientID = headers['clientID']
+        apiKey = headers['apiKey']
+    else:
+        print("HEADERS DO NOT EXIST")
+
+    # authenticate the clientID
+    if auth.authenticate_client(clientID, apiKey):
+        if config['GENERAL']['authentication'] == "ON":
+            try:
+                jwt.decode(headers['x-access-token'], config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
+            except jwt.exceptions.DecodeError:
+                return jsonify({'status': False, 'message': 'Invalid client token'}), 400
+            except jwt.exceptions.ExpiredSignature:
+                return jsonify({'status': False, 'message': 'Token has expired'}), 400
+
+        if db.insertIntoCollection("users", stat):
+            return jsonify({'status': True, 'statId': _UUID}), 201
+        else:
+            return jsonify({'status': False, 'message': 'There was an error adding stats.'}), 400
+    else:
+        return jsonify({'status': False, 'message': 'The request was made from a non-authenticated client'}), 400
+
 
 @client_api.route('/user/auth', methods=['POST'])
 def authentication():
@@ -37,7 +69,7 @@ def authentication():
                        'exp': datetime.datetime.utcnow() + datetime.timedelta(
                            seconds=int(config['JWT']['JWT_EXP_DELTA_SECONDS']))}
             jwt_token = jwt.encode(payload, config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
-            return jsonify({'status': True, 'token': jwt_token.decode('utf-8')}), 201
+            return jsonify({'status': True, 'token': jwt_token.decode('utf-8'), 'data': userData['firstLogin']}), 201
     else:
         return jsonify({'status': False, 'message': 'The request was made from a non-authenticated client'}), 400
 
@@ -72,7 +104,7 @@ def registration():
             _UUID = str(uuid.uuid4())
             currDate = datetime.datetime.now()
             user = {'uuid': _UUID, 'name': data['name'], 'email': data['email'], 'password': password,
-                    'description': data['description'], 'type': data['type'], 'favTeam': data['favTeam'],
+                    'description': data['description'], 'type': data['type'], 'favTeam': [], 'firstLogin': True,
                     'createdAt': str(currDate),
                     'modifiedAt': str(currDate)}
             if db.insertIntoCollection("users", user):
