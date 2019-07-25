@@ -36,10 +36,16 @@ def authentication():
                        'exp': datetime.datetime.utcnow() + datetime.timedelta(
                            seconds=int(config['JWT']['JWT_EXP_DELTA_SECONDS']))}
             jwt_token = jwt.encode(payload, config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
-            return jsonify({'status': True, 'token': jwt_token.decode('utf-8'), 'data': userData['firstLogin']}), 201
+            return jsonify({'status': True, 'token': jwt_token.decode('utf-8'), 'data': {'userId': userData['uuid'], 'favTeam': userData['favTeam']}}), 201
     else:
         return jsonify({'status': False, 'message': 'The request was made from a non-authenticated client'}), 400
 
+@client_api.route('/user/favTeams', methods=['POST'])
+def confirmFavTeams():
+    data = request.values
+    print(data)
+        #adicionar método para alterar o user na bd (uuid, favTeam utilizar variável data)
+    return jsonify({}), 204
 
 @client_api.route('/user', methods=['POST'])
 def registration():

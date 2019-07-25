@@ -15,45 +15,48 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <script type="text/javascript" src="js/chooseTeam.js"></script>
     <script type="text/javascript" src="js/login.js"></script>
+  
   </head>
+
   <body
     style="background: url(https://ae01.alicdn.com/kf/HTB1SajMSpXXXXc8XVXXq6xXFXXXz/8x8FT-Spots-Luz-Night-Time-de-Futebol-Campo-de-Futebol-Est-dio-Plataforma-Sob-Encomenda-Da.jpg_640x640.jpg); background-size: cover"
-    onload="load()"
-    ;
   >
-    <div align="center" class="main">
-      <h1>Selecione a equipa que quer seguir</h1>
-    </div>
+  
+  <div align="center" class="main">
+    <h1>Discout</h1>
+    
+      <div class="containerLogin">
+        <label class="text-white" for="userEmail"><b>Email</b></label>
+        <input
+          type="text"
+          id="uEmail"
+          placeholder="Enter email"
+          name="userEmail"
+          required
+        />
 
-    <div align="center">
-      <button id="b-ft1"></button>
-      <p></p>
-      <button id="b-ft2"></button>
-      <p></p>
-      <button id="b-ft3"></button>
-
-      <div class="selectTeam">
-        <label for="eq1">
-          <b> Equipa 1 </b>
-          <select id="ts1" onclick="selectTeam(this);">
-            <option> Escolha a sua equipa </option>
-          </select>
-        </label>
-      </div>
-      <div class="center-block">
+        <label class="text-white" for="userPsw"><b>Password</b></label>
+        <input
+          type="password"
+          id="uPsw"
+          placeholder="Enter Password"
+          name="userPsw"
+          onkeyup="validateLogin();"
+          required
+        />
+        <span id="loginMessage"></span>
         <button
-          type="submit"
-          style="width: 100px; margin-right: 10px;"
           class="btn btn-success"
-          id="confirmTeam"
+          style="width: 200px; margin-right: 10px;"
+          onclick="login()"
+          id="loginBtn"
           disabled="disabled"
-          onclick="confirmTeam()"
         >
-          Confirmar
+          Login
         </button>
+        
       </div>
-    </div>
+
   </body>
 </html>

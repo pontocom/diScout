@@ -1,5 +1,9 @@
 var basePath = "localhost:5000";
 
+function loginReg() {
+  window.location.replace("login.html");
+}
+
 function openLoginModal() {
   document.getElementById("idLogin").style.display = "block";
 }
@@ -56,15 +60,15 @@ function login() {
     type: "POST",
     data: body,
     success: function(result) {
-      //alert(JSON.stringify(result));
-      //alert(result);
-      
-      if (result.data === true) {
+      localStorage.setItem('userId', result.data.userId);
+      localStorage.setItem('favTeams', JSON.stringify(result.data.favTeam));
+
+      if(JSON.parse(localStorage.getItem('favTeams')).length <= 0){
         window.location.replace("chooseFavTeams.html");
       } else {
         window.location.replace("chooseTeam.html");
       }
-    },
+},
     error: function(result) {
       alert(JSON.stringify(result));
     }
@@ -92,6 +96,7 @@ function getAllTeams(select) {
       var ts2 = document.getElementById("ts2");
       var ts3 = document.getElementById("ts3");
 
+
       if (select.options.length == 1) {
         for (var t = 0; t < data.teams.length; t++) {
           if (
@@ -100,11 +105,16 @@ function getAllTeams(select) {
             (!ts2.selectedIndex ||
               ts2.options[ts2.selectedIndex].text != data.teams[t].name)
           ) {
+            
+            
             select.options[select.options.length] = new Option(
               data.teams[t].name,
               data.teams
             );
-          }
+            
+          } 
+            
+          
         }
       }
 
@@ -138,23 +148,32 @@ function confirmFavTeams() {
     ts3.options[ts3.selectedIndex].text
   ];
 
+  for (var i = 0; i < selectedTeams.length; i++) {
+    if(selectedTeams[i] == "Escolha a sua equipa") {
+      selectedTeams.splice(i,2);
+    } 
+  }
+  
+  body = {
+    'userId': localStorage.getItem('userId'),
+    'favTeam': selectedTeams
+  }
+
   $.ajax({
-    url: "http://" + basePath + "/user",
+    url: "http://" + basePath + "/user/favTeams",
 
     headers: {
       clientID: "44d50934-ed6c-45bb-abfc-dcb3e242c9a5", //If your header name has spaces or any other char not appropriate
       apiKey: "5b55aa8a1da5513373710bc844f0b227b0cd96c2",
       "Content-Type": "application/x-www-form-urlencoded"
     },
-    type: "PUT",
-    data: $.param({
-      email: document.getElementById("uEmail").value,
-      favTeams: selectedTeams
-    }),
+    type: "POST",
+    data: body,
     success: function(data) {
       //alert(JSON.stringify(data));
+      var favTeams = JSON.parse(localStorage.getItem('favTeams')).concat(selectedTeams);
+      localStorage.setItem('favTeams', JSON.stringify(favTeams));
       window.location.replace("chooseTeam.html");
-     // document.write("LLLLLLLLLLL");
     },
     error: function(data) {
       alert(JSON.stringify(data));
