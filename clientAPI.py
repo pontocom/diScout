@@ -6,6 +6,7 @@ import datetime
 import uuid
 import jwt
 import configparser
+import json
 
 client_api = Blueprint('client_api', __name__)
 config = configparser.ConfigParser()
@@ -17,6 +18,9 @@ def authentication():
     data = request.values
     headers = request.headers
 
+    print("Client ID = " + headers['clientID'])
+    print("API key = " + headers['apiKey'])
+
     clientID = ''
     apiKey = ''
 
@@ -26,9 +30,9 @@ def authentication():
         apiKey = headers['apiKey']
     else:
         print("HEADERS DO NOT EXIST")
-
     # authenticate the clientID
     if auth.authenticate_client(clientID, apiKey):
+        print("Client is authenticated - proceed")
         userData = db.checkUserPassword(data['email'], data['password'])
         if not userData:
             return jsonify({'status': False, 'message': 'The username and password are incorrect!'}), 400
@@ -72,13 +76,79 @@ def registration():
             _UUID = str(uuid.uuid4())
             currDate = datetime.datetime.now()
             user = {'uuid': _UUID, 'name': data['name'], 'email': data['email'], 'password': password,
-                    'description': data['description'], 'type': data['type'], 'favTeam': data['favTeam'],
+                    'description': data['description'], 'type': data['type'],
                     'createdAt': str(currDate),
                     'modifiedAt': str(currDate)}
             if db.insertIntoCollection("users", user):
                 return jsonify({'status': True, 'userId': _UUID}), 201
             else:
                 return jsonify({'status': False, 'message': 'There was an error adding the new user.'}), 400
+    else:
+        return jsonify({'status': False, 'message': 'The request was made from a non-authenticated client'}), 400
+
+
+@client_api.route('/user/<id>', methods=['GET'])
+def get_user(id):
+    data = request.values
+    headers = request.headers
+
+    print("Client ID = " + headers['clientID'])
+    print("API key = " + headers['apiKey'])
+
+    clientID = ''
+    apiKey = ''
+
+    # used to validate id the headers are being passed or not
+    if all(header in headers for header in ("clientID", "apiKey")):
+        clientID = headers['clientID']
+        apiKey = headers['apiKey']
+    else:
+        print("HEADERS DO NOT EXIST")
+    # authenticate the clientID
+    if auth.authenticate_client(clientID, apiKey):
+        print("Client is authenticated - proceed")
+        # TODO: Get all the user details from the database!!!!
+        user = db.getUser(id)
+        if user:
+            favTeams = db.getTeamsFromUsers(id)
+            if favTeams:
+                fullUser = {'user': user, 'teams': favTeams}
+                return jsonify({'status': True, 'info': fullUser}), 200
+            else:
+                return jsonify(
+                    {'user': user, 'status': False, 'message': 'Player without any favourite team associated .'}), 400
+
+        else:
+            return jsonify({'status': False, 'message': 'Unable to get player.'}), 400
+    else:
+        return jsonify({'status': False, 'message': 'The request was made from a non-authenticated client'}), 400
+
+
+@client_api.route('/user/fav', methods=['POST'])
+def set_user_fav_team():
+    data = request.values
+    headers = request.headers
+
+    print("Client ID = " + headers['clientID'])
+    print("API key = " + headers['apiKey'])
+
+    clientID = ''
+    apiKey = ''
+
+    # used to validate id the headers are being passed or not
+    if all(header in headers for header in ("clientID", "apiKey")):
+        clientID = headers['clientID']
+        apiKey = headers['apiKey']
+    else:
+        print("HEADERS DO NOT EXIST")
+    # authenticate the clientID
+    if auth.authenticate_client(clientID, apiKey):
+        print("Client is authenticated - proceed")
+        favTeam = {'uuid': data['uuid'], 'favTeam': data['favTeam']}
+        if db.insertIntoCollection("userteams", favTeam):
+            return jsonify({'status': True, 'user': data['uuid'], 'favTeam': data['favTeam']}), 201
+        else:
+            return jsonify({'status': False, 'message': 'There was an error adding the new user.'}), 400
     else:
         return jsonify({'status': False, 'message': 'The request was made from a non-authenticated client'}), 400
 

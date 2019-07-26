@@ -23,6 +23,7 @@ application = diDatabase["applications"]
 players = diDatabase["players"]
 seasons = diDatabase["seasons"]
 stats = diDatabase["stats"]
+userteams = diDatabase["userteams"]
 
 
 def insertApplication(app):
@@ -111,6 +112,21 @@ def getStat(id):
     else:
         return None
 
+
+def getUser(id):
+    user = users.find_one({'uuid': id})
+    if user is not None:
+        _user = {'uuid': user['uuid'],
+                   'name': user['name'],
+                   'email': user['email'],
+                   'description': user['description'],
+                   'type': user['type'],
+                   'teams': ''}
+        return _user
+    else:
+        return None
+
+
 def getPlayer(id):
     player = players.find_one({'uuid': id})
     if player is not None:
@@ -170,6 +186,13 @@ def getStatsFromPlayers(playerId):
         tstats.append(getStat(stat['uuid']))
     return tstats
 
+
+def getTeamsFromUsers(userId):
+    cur = userteams.find({'uuid': userId})
+    fteams = []
+    for team in cur:
+        fteams.append(team['favTeam'])
+    return fteams
 
 
 def getPlayersFromTeam(teamId):
