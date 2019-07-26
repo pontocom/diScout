@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"
+    />
+    <title>Discout</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/discout.css" />
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="js/login.js"></script>
+  
+  </head>
+
+  <body
+    style="background: url(https://ae01.alicdn.com/kf/HTB1SajMSpXXXXc8XVXXq6xXFXXXz/8x8FT-Spots-Luz-Night-Time-de-Futebol-Campo-de-Futebol-Est-dio-Plataforma-Sob-Encomenda-Da.jpg_640x640.jpg); background-size: cover"
+  >
+  
+  <div align="center" class="main">
+    <h1>Discout</h1>
+    
+      <div class="containerLogin">
+        <label class="text-white" for="userEmail"><b>Email</b></label>
+        <input
+          type="text"
+          id="uEmail"
+          placeholder="Enter email"
+          name="userEmail"
+          required
+        />
+
+        <label class="text-white" for="userPsw"><b>Password</b></label>
+        <input
+          type="password"
+          id="uPsw"
+          placeholder="Enter Password"
+          name="userPsw"
+          onkeyup="validateLogin();"
+          required
+        />
+        <span id="loginMessage"></span>
+        <button
+          class="btn btn-success"
+          style="width: 200px; margin-right: 10px;"
+          onclick="login()"
+          id="loginBtn"
+          disabled="disabled"
+        >
+          Login
+        </button>
+        
+      </div>
+
+  </body>
+</html>

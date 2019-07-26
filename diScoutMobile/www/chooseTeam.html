@@ -15,35 +15,29 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <script type="text/javascript" src="js/discout.js"></script>
+    <script type="text/javascript" src="js/chooseTeam.js"></script>
     <script type="text/javascript" src="js/login.js"></script>
   </head>
   <body
     style="background: url(https://ae01.alicdn.com/kf/HTB1SajMSpXXXXc8XVXXq6xXFXXXz/8x8FT-Spots-Luz-Night-Time-de-Futebol-Campo-de-Futebol-Est-dio-Plataforma-Sob-Encomenda-Da.jpg_640x640.jpg); background-size: cover"
+    onload="load()"
+    ;
   >
     <div align="center" class="main">
-      <h1>Escolha as suas equipas favoritas</h1>
+      <h1>Selecione a equipa que quer seguir</h1>
+    </div>
+
+    <div align="center">
+      <button id="b-ft1"></button>
+      <p></p>
+      <button id="b-ft2"></button>
+      <p></p>
+      <button id="b-ft3"></button>
 
       <div class="selectTeam">
         <label for="eq1">
           <b> Equipa 1 </b>
-          <select id="ts1" onclick="getAllTeams(this);">
-            <option> Escolha a sua equipa </option>
-          </select>
-        </label>
-
-        <p></p>
-        <label for="eq2">
-          <b> Equipa 2 </b>
-          <select id="ts2" onclick="getAllTeams(this);" disabled>
-            <option> Escolha a sua equipa </option>
-          </select>
-        </label>
-
-        <p></p>
-        <label for="eq3">
-          <b> Equipa 3 </b>
-          <select id="ts3" onclick="getAllTeams(this);" disabled>
+          <select id="ts1" onclick="selectTeam(this);">
             <option> Escolha a sua equipa </option>
           </select>
         </label>
@@ -55,7 +49,7 @@
           class="btn btn-success"
           id="confirmTeam"
           disabled="disabled"
-          onclick="confirmFavTeams()"
+          onclick="confirmTeam()"
         >
           Confirmar
         </button>
