@@ -6,7 +6,8 @@ import datetime
 import uuid
 import jwt
 import configparser
-import json
+from flasgger.utils import swag_from
+
 
 client_api = Blueprint('client_api', __name__)
 config = configparser.ConfigParser()
@@ -14,6 +15,7 @@ config.read('config.ini')
 
 
 @client_api.route('/user/auth', methods=['POST'])
+@swag_from('./apidocs/authentication.yml')
 def authentication():
     data = request.values
     headers = request.headers

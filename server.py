@@ -5,9 +5,34 @@ from flask import (
 )
 import clientAPI as client_api
 import adminAPI as admin_api
+from flasgger import Swagger
+
+template = {
+  "swagger": "2.0",
+  "info": {
+    "title": "diScout API",
+    "description": "An API for scouting players!",
+    "contact": {
+      "responsibleOrganization": "ISCTE - Instituto Universitário de Lisboa",
+      "responsibleDeveloper": "Carlos Serrão",
+      "email": "carlos.serrao@iscte-iul.pt",
+      "url": "istar.iscte-iul.pt",
+    },
+    "termsOfService": "http://me.com/terms",
+    "version": "0.0.1"
+  },
+  "host": "127.0.0.1:5000",  # overrides localhost:500
+  "basePath": "/",  # base bash for blueprint registration
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "operationId": "getmyData"
+}
 
 # Create the application instance
 app = Flask(__name__, template_folder="templates")
+Swagger(app, template=template)
 
 
 def find_blueprint(api):

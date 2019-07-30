@@ -72,7 +72,7 @@ def checkUserPassword(email, password):
 
 
 def insertEvent(event):
-    allNecessaryFields = 'userID' in event and 'appID' in event and 'timestamp' in event and 'competition' in event
+    allNecessaryFields = 'userID' in event and 'appID' in event and 'timestamp' in event and 'gameID' in event and 'playerID' in event and 'event' in event
     if not allNecessaryFields:
         return False
     events.insert_one(event)
