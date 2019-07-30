@@ -20,14 +20,15 @@
   </head>
   <body
     style="background: url(https://ae01.alicdn.com/kf/HTB1SajMSpXXXXc8XVXXq6xXFXXXz/8x8FT-Spots-Luz-Night-Time-de-Futebol-Campo-de-Futebol-Est-dio-Plataforma-Sob-Encomenda-Da.jpg_640x640.jpg); background-size: cover"
-  >
+    onload="getAllTeams()"
+   >
     <div align="center" class="main">
       <h1>Escolha as suas equipas favoritas</h1>
 
       <div class="selectTeam">
         <label for="eq1">
           <b> Equipa 1 </b>
-          <select id="ts1" onclick="getAllTeams(this);">
+          <select id="ts1" onclick="loadFavTeams(this);">
             <option> Escolha a sua equipa </option>
           </select>
         </label>
@@ -35,7 +36,7 @@
         <p></p>
         <label for="eq2">
           <b> Equipa 2 </b>
-          <select id="ts2" onclick="getAllTeams(this);" disabled>
+          <select id="ts2" onclick="loadFavTeams(this);" disabled>
             <option> Escolha a sua equipa </option>
           </select>
         </label>
@@ -43,7 +44,7 @@
         <p></p>
         <label for="eq3">
           <b> Equipa 3 </b>
-          <select id="ts3" onclick="getAllTeams(this);" disabled>
+          <select id="ts3" onclick="loadFavTeams(this);" disabled>
             <option> Escolha a sua equipa </option>
           </select>
         </label>

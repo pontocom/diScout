@@ -1,18 +1,28 @@
 function load() {
   var favTeams = JSON.parse(localStorage.getItem("favTeams"));
+  var teams = JSON.parse(localStorage.getItem("teams"));
+  //var teamsFavId = JSON.parse(localStorage.getItem("teamsFavId"));
+  var teamNames = [];
 
-
-  if (favTeams[0] != null) {
-    document.getElementById("b-ft1").innerHTML = favTeams[0];
+  for(var i=0; i< favTeams.length; i++) {
+    for(var j=0; j< favTeams.length; j++){
+      if(favTeams[i] == teams[j].uuid){
+        teamNames.splice(teamNames.length-1, 0, teams[j].name);
+      }
+    } 
   }
-  if (favTeams[1] != null) {
-    document.getElementById("b-ft2").innerHTML = favTeams[1];
+
+  if (favTeams[0]) {
+    document.getElementById("b-ft1").innerHTML = teamNames[0];
+  }
+  if (favTeams[1]) {
+    document.getElementById("b-ft2").innerHTML = teamNames[1];
   } else {
     document.getElementById("b-ft2").style.display = "none";
   }
 
-  if (favTeams[2] != null) {
-    document.getElementById("b-ft3").innerHTML = favTeams[2];
+  if (favTeams[2]) {
+    document.getElementById("b-ft3").innerHTML = teamNames[2];
   } else {
     document.getElementById("b-ft3").style.display = "none";
   }
