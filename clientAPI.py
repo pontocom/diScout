@@ -322,6 +322,8 @@ def add_event():
         return jsonify({'status': 'True', 'message': 'Insertion not successful'}), 400
     return jsonify({'status': 'True', 'message': 'Insertion successful'}), 201
 
+#TODO: Add Events
+
 
 @client_api.route('/game/<id>', methods=['GET'])
 def getGame(id):
