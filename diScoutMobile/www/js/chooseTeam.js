@@ -5,7 +5,7 @@ function load() {
   var teamNames = [];
 
   for(var i=0; i< favTeams.length; i++) {
-    for(var j=0; j< favTeams.length; j++){
+    for(var j=0; j< teams.length; j++){
       if(favTeams[i] == teams[j].uuid){
         teamNames.splice(teamNames.length-1, 0, teams[j].name);
       }
