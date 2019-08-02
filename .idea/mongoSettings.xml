@@ -4,18 +4,7 @@
     <option name="serverConfigurations">
       <list>
         <ServerConfiguration>
-          <option name="label" value="Local Mongo&lt;db" />
-          <option name="serverUrls">
-            <list>
-              <option value="localhost:27017" />
-            </list>
-          </option>
-          <option name="sshTunnelingConfiguration">
-            <SshTunnelingConfiguration />
-          </option>
-        </ServerConfiguration>
-        <ServerConfiguration>
-          <option name="label" value="Local Mongo" />
+          <option name="label" value="diScout" />
           <option name="serverUrls">
             <list>
               <option value="localhost:27017" />

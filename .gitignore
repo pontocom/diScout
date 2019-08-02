@@ -110,3 +110,5 @@ diScoutMobile/platforms
 diScoutMobile/plugins
 .idea/
 .idea/mongoSettings.xml
+.idea/mongoSettings.xml
+.gitignore
