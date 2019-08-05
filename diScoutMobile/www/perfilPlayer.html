@@ -21,32 +21,31 @@
   </head>
   <body
     style="background: url(https://ae01.alicdn.com/kf/HTB1SajMSpXXXXc8XVXXq6xXFXXXz/8x8FT-Spots-Luz-Night-Time-de-Futebol-Campo-de-Futebol-Est-dio-Plataforma-Sob-Encomenda-Da.jpg_640x640.jpg); background-size: cover"
+    onload="loadPlayer()"
+    ;
   >
     <div align="center" class="main">
-
-        <h1> Nome do Jogador </h1>
-
-        <div class="center-block">
-          <button
-            onclick="registarAction()"
-            style="width: 200px; margin-right: 10px;"
-            class="btn btn-success"
-            id="registarAction"
-          >
-            Registar acções
-          </button>
-          <button
-            onclick="seeStats()"
-            type="submit"
-            style="width: 200px; margin-right: 10px;"
-            class="btn btn-danger"
-            id="stats"
-          >
-            Ver estatísticas
-          </button>
-        </div>
-
-      
+      <h1 id="playerID"></h1>
+      <p></p>
+      <div class="center-block">
+        <button
+          onclick="registarAction()"
+          style="width: 200px; margin-right: 10px;"
+          class="btn btn-success"
+          id="registarAction"
+        >
+          Registar acções
+        </button>
+        <button
+          onclick="seeStats()"
+          type="submit"
+          style="width: 200px; margin-right: 10px;"
+          class="btn btn-danger"
+          id="stats"
+        >
+          Ver estatísticas
+        </button>
+      </div>
     </div>
   </body>
 </html>

@@ -16,8 +16,41 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script type="text/javascript" src="js/discout.js"></script>
+    <script type="text/javascript" src="js/chooseTeam.js"></script>
+    <script type="text/javascript" src="js/choosePlayer.js"></script>
+    <script type="text/javascript" src="js/perfilPlayer.js"></script>
+    
   </head>
   <body
     style="background: url(https://ae01.alicdn.com/kf/HTB1SajMSpXXXXc8XVXXq6xXFXXXz/8x8FT-Spots-Luz-Night-Time-de-Futebol-Campo-de-Futebol-Est-dio-Plataforma-Sob-Encomenda-Da.jpg_640x640.jpg); background-size: cover"
-  ></body>
+  >
+    <div align="center" class="main">
+      <h1>Selecione o jogador que quer seguir</h1>
+    </div>
+    <p></p>
+    
+    <div align="center">
+      <div class="selectPlayer">
+        <label for="pl1">
+          <b> Jogador </b>
+          <select id="ps1" onclick="selectPlayer(this);">
+            <option> Escolha o seu jogador </option>
+          </select>
+        </label>
+      </div>
+
+      <div class="center-block">
+        <button
+          type="submit"
+          style="width: 100px; margin-right: 10px;"
+          class="btn btn-success"
+          id="confirmPlayer"
+          disabled="disabled"
+          onclick="confirmPlayer()"
+        >
+          Confirmar
+        </button>
+      </div>
+    </div>
+  </body>
 </html>

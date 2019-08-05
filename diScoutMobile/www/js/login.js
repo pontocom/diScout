@@ -88,8 +88,7 @@ function login() {
     type: "POST",
     data: body,
     success: function(result) {
-      
-     /* localStorage.setItem("user", JSON.stringify(data.info.user));
+      /* localStorage.setItem("user", JSON.stringify(data.info.user));
       localStorage.setItem("favTeams", JSON.stringify(data.info.teams));
 
       if (JSON.parse(localStorage.getItem("favTeams")).length <= 0) {
@@ -97,7 +96,7 @@ function login() {
       } else {
         window.location.replace("chooseTeam.html");
       }*/
-      
+
       localStorage.setItem("userId", JSON.stringify(result.data.userId));
       getUser();
     },
@@ -110,7 +109,7 @@ function login() {
 // Obter informações do user
 function getUser() {
   var user = JSON.parse(localStorage.getItem("userId"));
-  
+
   $.ajax({
     url: "http://" + basePath + "/user/" + user,
     type: "GET",
@@ -122,11 +121,10 @@ function getUser() {
         "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRJZCI6IjNiYmViZGY5LTZkOTgtNDA1Ny1hNzlmLTdjYjhjMWE3MTk2NiIsImVtYWlsIjoiY2FybG9zQGdtYWlsLnB0IiwidHlwZSI6InBhcmVudCIsImV4cCI6MTU1MDUzMzM3NX0.9BGbX75bFtbu3FVkp1YirsEGgwY9cJpMdEaYfqKSuBc" //for object property name, use quoted notation shown in second
     },
     success: function(data) {
-      
       //localStorage.setItem("user", JSON.stringify(data.user.uuid));
       localStorage.setItem("favTeams", JSON.stringify(data.info.teams));
 
-      if (JSON.parse(localStorage.getItem("favTeams")).length <= 0) {
+      if (localStorage.getItem("favTeams").length <= 0) {
         window.location.replace("chooseFavTeams.html");
       } else {
         window.location.replace("chooseTeam.html");
@@ -134,8 +132,11 @@ function getUser() {
     },
     error: function(data) {
       //alert(JSON.stringify(data.responseJSON.user.teams));
-      localStorage.setItem("favTeams", JSON.stringify(data.responseJSON.user.teams));
-     window.location.replace("chooseFavTeams.html");
+      localStorage.setItem(
+        "favTeams",
+        JSON.stringify(data.responseJSON.user.teams)
+      );
+      window.location.replace("chooseFavTeams.html");
     }
   });
 }
@@ -198,13 +199,11 @@ function loadFavTeams(select) {
   }
 }
 
-
 //Confirmar Equipas Favoritas
 function confirmFavTeams() {
   // localStorage.removeItem("favTeam");
   // localStorage.removeItem("teamsId");
   // localStorage.removeItem("favTeams")
-  localStorage.removeItem("quentinTarantino");
 
   var ts1 = document.getElementById("ts1");
   var ts2 = document.getElementById("ts2");
@@ -221,7 +220,6 @@ function confirmFavTeams() {
       selectedTeams.splice(i, 2);
     }
   }
-  //var userId = localStorage.getItem("userId");
 
   for (var j = 0; j < selectedTeams.length; j++) {
     body = {
@@ -240,20 +238,18 @@ function confirmFavTeams() {
       type: "POST",
       data: body,
       success: function(data) {
-        
         if (
           !localStorage.getItem("favTeams") ||
-          !JSON.parse(localStorage.getItem("favTeams")).includes(data["favTeam"])
+          !JSON.parse(localStorage.getItem("favTeams")).includes(
+            data["favTeam"]
+          )
         ) {
           var favTeams = JSON.parse(localStorage.getItem("favTeams")).concat(selectedTeams);
           localStorage.setItem("favTeams", JSON.stringify(favTeams));
         }
         var favTeamsSelected = localStorage.getItem("favTeams");
         var teamsSelected = JSON.parse(favTeamsSelected);
-        if (
-          teamsSelected.length ==
-          selectedTeams.length
-        ) {
+        if (teamsSelected.length == selectedTeams.length) {
           window.location.replace("chooseTeam.html");
         }
       },

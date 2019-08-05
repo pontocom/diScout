@@ -121,7 +121,7 @@ def getUser(id):
                    'email': user['email'],
                    'description': user['description'],
                    'type': user['type'],
-                   'teams': ''}
+                   'teams': []}
         return _user
     else:
         return None
