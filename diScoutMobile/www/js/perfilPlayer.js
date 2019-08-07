@@ -1,16 +1,16 @@
 function loadPlayer() {
-   
-    var player = localStorage.getItem("followPlayer");
-    document.getElementById("playerID").innerHTML = player;
+  var player = localStorage.getItem("followPlayer");
+  document.getElementById("playerID").innerHTML = player;
 }
 
 function registarAction() {
-    window.location.replace("discout.html");
+  window.location.replace("discout.html");
 }
 
 function seeStats() {
-    window.location.replace("stats.html");
-         
+  window.location.replace("stats.html");
 }
 
-
+function retro_choosePlayer() {
+  window.location.replace("choosePlayer.html");
+}

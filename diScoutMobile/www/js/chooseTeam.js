@@ -75,7 +75,6 @@ function selectTeam(select) {
   });
 }
 
-
 function getTeam1() {
   var teams = JSON.parse(localStorage.getItem("teams"));
   for (var i = 0; i < teams.length; i++) {
@@ -106,65 +105,16 @@ function getTeam3() {
   }
 }
 
-function selectPlayer() {
-  $.ajax({
-    url: "http://" + basePath + "/team/7f67e48e-69ab-4156-b94f-0fd0e1e937b8",
-    type: "GET",
-    headers: {
-      clientID: "44d50934-ed6c-45bb-abfc-dcb3e242c9a5", //If your header name has spaces or any other char not appropriate
-      apiKey: "5b55aa8a1da5513373710bc844f0b227b0cd96c2",
-      "Content-Type": "application/x-www-form-urlencoded",
-      "x-access-token":
-        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRJZCI6IjNiYmViZGY5LTZkOTgtNDA1Ny1hNzlmLTdjYjhjMWE3MTk2NiIsImVtYWlsIjoiY2FybG9zQGdtYWlsLnB0IiwidHlwZSI6InBhcmVudCIsImV4cCI6MTU1MDUzMzM3NX0.9BGbX75bFtbu3FVkp1YirsEGgwY9cJpMdEaYfqKSuBc" //for object property name, use quoted notation shown in second
-    },
-    success: function(data) {
-      //alert(JSON.stringify(data.team.players));
-      var ps1 = document.getElementById("ps1");
-
-      if (select.options.length == 1) {
-        for (var t = 0; t < data.team.players.length; t++) {
-          select.options[select.options.length] = new Option(
-            data.team.players[t].name,
-            data.team.players
-          );
-        }
-      }
-
-      if (
-        select.options[select.selectedIndex].text &&
-        select.options[select.selectedIndex].text != "Escolha o seu jogador"
-      ) {
-        if (select.id == ps1.id) {
-          document.getElementById("confirmPlayer").disabled = false;
-        }
-      }
-    },
-    error: function(data) {
-      alert(JSON.stringify(data));
-    }
-  });
-}
-/*
-var btn = document.createElement("BUTTON");   // Create a <button> element
-btn.innerHTML = "CLICK ME";                   // Insert text
-document.body.appendChild(btn);               // Append <button> to <body>
-*/
-
 function confirmTeam() {
   var ts1 = document.getElementById("ts1");
-  $.ajax({
-    url: "http://" + basePath + "/team/",
-    type: "GET",
-    headers: {
-      clientID: "44d50934-ed6c-45bb-abfc-dcb3e242c9a5", //If your header name has spaces or any other char not appropriate
-      apiKey: "5b55aa8a1da5513373710bc844f0b227b0cd96c2",
-      "Content-Type": "application/x-www-form-urlencoded",
-      "x-access-token":
-        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRJZCI6IjNiYmViZGY5LTZkOTgtNDA1Ny1hNzlmLTdjYjhjMWE3MTk2NiIsImVtYWlsIjoiY2FybG9zQGdtYWlsLnB0IiwidHlwZSI6InBhcmVudCIsImV4cCI6MTU1MDUzMzM3NX0.9BGbX75bFtbu3FVkp1YirsEGgwY9cJpMdEaYfqKSuBc" //for object property name, use quoted notation shown in second
-    },
-    success: function(data) {},
-    error: function(data) {
-      alert(JSON.stringify(data));
+  var teams = JSON.parse(localStorage.getItem("teams"));
+  var selectedTeam = ts1.options[ts1.selectedIndex].textContent;
+
+  for (var t = 0; t < teams.length; t++) {
+    if (selectedTeam == teams[t].name) {
+        localStorage.setItem("selectedTeam", JSON.stringify(teams[t].uuid));
+        window.location.replace("choosePlayer.html");
     }
-  });
+  }
+ 
 }

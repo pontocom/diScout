@@ -11,18 +11,20 @@ function selectPlayer(select) {
           "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRJZCI6IjNiYmViZGY5LTZkOTgtNDA1Ny1hNzlmLTdjYjhjMWE3MTk2NiIsImVtYWlsIjoiY2FybG9zQGdtYWlsLnB0IiwidHlwZSI6InBhcmVudCIsImV4cCI6MTU1MDUzMzM3NX0.9BGbX75bFtbu3FVkp1YirsEGgwY9cJpMdEaYfqKSuBc" //for object property name, use quoted notation shown in second
       },
       success: function(data) {
-      //  alert(JSON.stringify(data.team.players));
+      //alert(JSON.stringify(data.team.players));
         var ps1 = document.getElementById("ps1");
+        localStorage.setItem("players", JSON.stringify(data.team.players));
   
         if (select.options.length == 1) {
           for (var t = 0; t < data.team.players.length; t++) {
-          
-            select.options[select.options.length] = new Option(
-              data.team.players[t].name,
-              data.team.players
-            );
+            
+            select.options[select.options.length] = new Option(data.team.players[t].name,data.team.players);
+            
+            //aux.push(data.team.players[t].uuid);
+            //localStorage.setItem("players", aux);
           }
         }
+        
   
         if (
           select.options[select.selectedIndex].text &&
@@ -43,8 +45,23 @@ function selectPlayer(select) {
     var ps1 = document.getElementById("ps1");
  
       var selectedPlayer =  ps1.options[ps1.selectedIndex].text;
+      
       localStorage.setItem("followPlayer", selectedPlayer);
-     //document.getElementById("playerID").innerHTML = "David";
-     window.location.replace("perfilPlayer.html");
+      //localStorage.setItem("players", selectedPlayerId);
+     
+      var player = localStorage.getItem("followPlayer");
+      var players = JSON.parse(localStorage.getItem("players"));
+
+      for (var i = 0; i < players.length; i++) {
+        if (player == players[i].name) {
+          localStorage.setItem("idPlayer", players[i].uuid);
+        }
+      }
+
+      window.location.replace("perfilPlayer.html");
  
+   }
+
+   function retro_chooseTeam() {
+     window.location.replace("chooseTeam.html")
    }

@@ -18,24 +18,40 @@
     <script type="text/javascript" src="js/discout.js"></script>
     <script type="text/javascript" src="js/login.js"></script>
     <script type="text/javascript" src="js/perfilPlayer.js"></script>
+    ~
+    <script type="text/javascript" src="js/stats.js"></script>
   </head>
   <body
     style="background: url(https://ae01.alicdn.com/kf/HTB1SajMSpXXXXc8XVXXq6xXFXXXz/8x8FT-Spots-Luz-Night-Time-de-Futebol-Campo-de-Futebol-Est-dio-Plataforma-Sob-Encomenda-Da.jpg_640x640.jpg); background-size: cover"
-    onload="loadPlayer()";
+    onload="loadPlayer()"
+    ;
   >
-    <div class="main">
-      <h1 id="playerID"></h1>
+    <div class="topleft">
+      <div class="main">
+        <h1 id="playerID"></h1>
+      </div>
+      <div>
+        <ul style="list-style: none;">
+          <li class="text-white">Passe</li>
+          <li class="text-white">Remate</li>
+          <li class="text-white">Para fora</li>
+          <li class="text-white">Recuperação de bola</li>
+          <li class="text-white">Perda de bola</li>
+          <li class="text-white">Falta de sofrida</li>
+          <li class="text-white">Falta cometida</li>
+        </ul>
+      </div>
     </div>
-    <div>
-      <ul style="list-style: none;">
-        <li class="text-white"> Passe </li>
-        <li class="text-white"> Remate </li>
-        <li class="text-white"> Para fora </li>
-        <li class="text-white"> Recuperação de bola </li>
-        <li class="text-white"> Perda de bola </li>
-        <li class="text-white"> Falta de sofrida </li>
-        <li class="text-white"> Falta cometida </li>
-      </ul>
+    <div class="retroceder">
+      <button
+        type="submit"
+        style="width: 100px; margin-right: 10px;"
+        class="btn btn-danger"
+        id="retroceder"
+        onclick="retro_perfilPlayer()"
+      >
+        Retroceder
+      </button>
     </div>
   </body>
 </html>
