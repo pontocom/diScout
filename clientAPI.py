@@ -314,10 +314,11 @@ def getUserStatistics(id):
 
 @client_api.route('/event', methods=['POST'])
 def add_event():
+    data = jsonify(request.values)
     print("Add a single event...")
-    if not request.json:
+    if not data.json:
         return jsonify({'status': 'True', 'message': 'Wrong document type'}), 400
-    success = db.insertEvent(request.json)
+    success = db.insertEvent(data.json)
     if not success:
         return jsonify({'status': 'True', 'message': 'Insertion not successful'}), 400
     return jsonify({'status': 'True', 'message': 'Insertion successful'}), 201
