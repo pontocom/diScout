@@ -1,0 +1,52 @@
+Client Get_user
+    Este método serve para retornar as equipas favoritas de um determinado utilizador.---
+    tags:
+      - APK feedback
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: Deve-se colocar o id do utilizador para retornar a informação do utilizador.
+
+    responses:
+      400:
+        description: O utilizador não contém nenhuma equipa favorita.
+        schema:
+          id: error
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            message:
+              type: string
+              description: Uma mensagem que contém detalhes sobre os resultados da operação.
+              example: "User without any favourite team associated."
+      200:
+        description: Retorna a informação do utilizador
+        schema:
+          id: result
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            info:
+              type: object
+              description: É o id que fica associado ao utilizador após o seu registo na aplicação.
+              properties:
+                teams:
+                  type: array
+                  description: Contém as equipas favoritas do utilizador
+                  example: ["2c791ffc-4b18-4241-b886-37551371410a", "f7dec2cb-c124-4bc0-87ab-9e804a0e96ef"]
+                user:
+                  type: object
+                  description: Contém a informação pessoal do utilizador.
+                  example:
+                    "description": "Administrador"
+                    "email": "david@gmail.com"
+                    "name": "david"
+                    "type": "Olheiro"
+                    "uuid": "8ac82a72-c606-47f6-8446-b68fa7c75f52"
+
+

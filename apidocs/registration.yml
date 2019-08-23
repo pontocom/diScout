@@ -1,0 +1,43 @@
+Client Registration
+    Este método serve para registar o utilizador.---
+    tags:
+      - APK feedback
+    consumes:
+      - application/json
+    parameters:
+      - in: body
+        name: body
+        description: Credenciais do registo do utilizador
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+              description: Email do utilizador
+              example: "david.cadeiras@iscte-iul.pt"
+
+    responses:
+      400:
+        description: Erro do lado do cliente. O email ainda não foi registado.
+        schema:
+          id: error
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            message:
+              type: string
+              description: Uma mensagem que contém detalhes sobre os resultados da operação.
+              example: "This user email has already been registered previously."
+      200:
+        description: Retorna um bolean a indicar o resultado da operação e um userId que é o id do utilizador gerado após o seu registo.
+        schema:
+          id: result
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            userId:
+              type: string
+              description: É o id que fica associado ao utilizador após o seu registo na aplicação.
+              example: "8ac82a72-c606-47f6-8446-b68fa7c75f52"

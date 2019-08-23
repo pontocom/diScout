@@ -43,13 +43,13 @@ def authentication():
                        'exp': datetime.datetime.utcnow() + datetime.timedelta(
                            seconds=int(config['JWT']['JWT_EXP_DELTA_SECONDS']))}
             jwt_token = jwt.encode(payload, config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
-            return jsonify({'status': True, 'token': jwt_token.decode('utf-8'),
-                            'data': {'userId': userData['uuid'], 'favTeam': userData['favTeam']}}), 201
+            return jsonify({'status': True, 'token': jwt_token.decode('utf-8'), 'userId': userData['uuid']}), 201
     else:
         return jsonify({'status': False, 'message': 'The request was made from a non-authenticated client'}), 400
 
 
 @client_api.route('/user', methods=['POST'])
+@swag_from('./apidocs/registration.yml')
 def registration():
     data = request.values
     headers = request.headers
@@ -79,11 +79,10 @@ def registration():
             _UUID = str(uuid.uuid4())
             currDate = datetime.datetime.now()
             user = {'uuid': _UUID, 'name': data['name'], 'email': data['email'], 'password': password,
-                    'description': data['description'], 'type': data['type'], 'favTeam': [],
-                    'createdAt': str(currDate),
+                    'description': data['description'], 'type': data['type'], 'createdAt': str(currDate),
                     'modifiedAt': str(currDate)}
             if db.insertIntoCollection("users", user):
-                return jsonify({'status': True, 'userId': _UUID, 'favTeam': user['favTeam']}), 201
+                return jsonify({'status': True, 'userId': _UUID}), 201
             else:
                 return jsonify({'status': False, 'message': 'There was an error adding the new user.'}), 400
     else:
@@ -91,6 +90,7 @@ def registration():
 
 
 @client_api.route('/user/<id>', methods=['GET'])
+@swag_from('./apidocs/get_user.yml')
 def get_user(id):
     data = request.values
     headers = request.headers
@@ -119,12 +119,12 @@ def get_user(id):
                 return jsonify({'status': True, 'info': fullUser}), 200
             else:
                 return jsonify(
-                    {'user': user, 'status': False, 'message': 'Player without any favourite team associated .'}), 400
+                    {'user': user, 'status': False, 'message': 'User without any favourite team associated.'}), 400
 
         else:
             return jsonify({'status': False, 'message': 'Unable to get player.'}), 400
     else:
-        return jsonify({'status': False, 'message': 'The request was made from a non-authenticated client'}), 400
+        return jsonify({'status': False, 'message': 'The request was made from a non-authenticated client.'}), 400
 
 
 @client_api.route('/user/fav', methods=['POST'])

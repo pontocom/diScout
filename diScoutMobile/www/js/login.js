@@ -56,8 +56,7 @@ function register() {
       email: document.getElementById("rEmail").value,
       password: document.getElementById("nPsw").value,
       description: document.getElementById("desc").value,
-      type: document.getElementById("tipo").value,
-      favTeam: ""
+      type: document.getElementById("tipo").value
     }),
     success: function(data) {
       alert(JSON.stringify(data));
@@ -97,7 +96,7 @@ function login() {
         window.location.replace("chooseTeam.html");
       }*/
 
-      localStorage.setItem("userId", JSON.stringify(result.data.userId));
+      localStorage.setItem("userId", JSON.stringify(result.userId));
       getUser();
     },
     error: function(result) {

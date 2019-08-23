@@ -1,37 +1,53 @@
 Client Authentication
-    Call this API entry point passing the MD5 of the APK to obtain feedback, to get detailed information about the APK scan results.
-    ---
+    Este método serve para o utilizador autenticar-se à aplicação de forma a utilizá-la.---
     tags:
       - APK feedback
+    consumes:
+      - application/json
     parameters:
-      - name: id
-        in: md5
-        type: string
-        required: true
-        description: The APK MD5 identifier
-    responses:
-      500:
-        description: Some error has occurred
+      - in: body
+        name: body
+        description: Credenciais do utilizador
         schema:
-          id: result
+          type: object
+          properties:
+            email:
+              type: string
+              description: Email do utilizador
+              example: "david.cadeiras@iscte-iul.pt"
+            password:
+              type: string
+              description: Password do utilizador
+              example: "IGE2014"
+
+    responses:
+      400:
+        description: Erro do lado do cliente. As credenciais fornecidas estão incorretas
+        schema:
+          id: error
           properties:
             status:
               type: boolean
-              description: A status code indicating the result of the operation
+              description: O estado indica o resultado da operação.
             message:
               type: string
-              description: A message that contain details about the results of the operation
+              description: Uma mensagem que contém detalhes sobre os resultados da operação.
+              example: "The username and password are incorrect!"
       200:
-        description: Returns the result for the specific APK MD5 requested
+        description: Retorna um token para garantir a segurança na autenticação e um id que fica associado ao utilizador.
         schema:
           id: result
           properties:
             status:
               type: boolean
               description: A status code indicating the result of the operation
-            features:
-              type: array
-              description: The awesomeness list
-              items:
-                type: string
-              default: ["perfect", "simple", "lovely"]
+            token:
+              type: string
+              description: Token de sessão. Permite auntenticar o utilizador ao realizar operações.
+              example: "adasdads"
+            userId:
+              type: string
+              description: É o identificador que fica associado ao utilizador.
+              example: "8ac82a72-c606-47f6-8446-b68fa7c75f52"
+
+              #additionalProperties: true Este campo é para utilizar com uma estrutura que recebe mais do que 1 objeto
