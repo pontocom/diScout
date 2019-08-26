@@ -60,8 +60,7 @@ function register() {
     }),
     success: function(data) {
       alert(JSON.stringify(data));
-      //document.getElementById("registerForm").setAttribute("action", "index.html");
-      //document.getElementById("idRegistar").style.display = "none";
+      
     },
     error: function(data) {
       alert(JSON.stringify(data));
@@ -87,15 +86,7 @@ function login() {
     type: "POST",
     data: body,
     success: function(result) {
-      /* localStorage.setItem("user", JSON.stringify(data.info.user));
-      localStorage.setItem("favTeams", JSON.stringify(data.info.teams));
-
-      if (JSON.parse(localStorage.getItem("favTeams")).length <= 0) {
-        window.location.replace("chooseFavTeams.html");
-      } else {
-        window.location.replace("chooseTeam.html");
-      }*/
-
+      
       localStorage.setItem("userId", JSON.stringify(result.userId));
       getUser();
     },

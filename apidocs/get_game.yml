@@ -1,0 +1,85 @@
+Get Game
+    Este método serve para retornar a informação de um determinado jogo.---
+    tags:
+      - APK feedback
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: Deve-se colocar o id do jogo para retornar a sua informação.
+
+    responses:
+      400:
+        description: Não existe nenhum jogo criado.
+        schema:
+          id: error11
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            message:
+              type: string
+              description: Uma mensagem que contém detalhes sobre os resultados da operação.
+              example: 'Unable to get Game.'
+      200:
+        description: Retorna a informação do jogo
+        schema:
+          id: result11
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            games:
+              type: object
+              description: Contém a informação do jogo
+              properties:
+                awayTeamId:
+                  type: string
+                  description: Descreve o id da equipa visitante
+                  example: "14d6f50a-67c9-4cac-939d-c5d7da00c9b0"
+                date:
+                  type: string
+                  description: Descreve a data que se realizou o jogo
+                  example: "14/04/2019"
+                description:
+                  type: string
+                  description: Descreve o nome da competição
+                  example: "Campeonato Nacional de Iniciados 1ª Divisão"
+                fields:
+                  type: object
+                  description: Descreve as caraterísticas do campo em que se irá realizar o jogo
+                  properties:
+                    address:
+                      type: string
+                      description: Descreve a morada aonde se irá realizar o jogo
+                      example: "Rua de Sacavém, 52"
+                    latt:
+                      type: string
+                      description: Descreve a latitude em que se encontra o estádio
+                      example: ""
+                    logt:
+                      type: string
+                      description: Descreve a longitude em que se encontra o estádio
+                      example: ""
+                    name:
+                      type: string
+                      description: Descreve o nome do estádio
+                      example: "Estádio de Sacavém"
+                homeTeamId:
+                  type: string
+                  description: Descreve o id da equipa visitada
+                  example: "7f67e48e-69ab-4156-b94f-0fd0e1e937b8"
+                hour:
+                  type: string
+                  description: Descreve a hora de início do jogo
+                  example: "11:00"
+                uuid:
+                  type: string
+                  description: Refere-se ao id do jogo
+                  example: "d42bac0b-34b1-44c0-8513-76d8015063d7"
+
+
+
+

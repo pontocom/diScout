@@ -1,5 +1,5 @@
-Client Registration
-    Este método serve para registar o utilizador.---
+User Favorite Team
+    Este método serve para adicionar uma equipa favorita ao utilizador.---
     tags:
       - APK feedback
     consumes:
@@ -7,20 +7,24 @@ Client Registration
     parameters:
       - in: body
         name: body
-        description: Credenciais do registo do utilizador
+        description: Associar ao utilizador uma equipa favorita.
         schema:
           type: object
           properties:
-            email:
+            uuid:
               type: string
-              description: Email do utilizador
-              example: "david.cadeiras@iscte-iul.pt"
+              description: Id do utilizador
+              example: "8ac82a72-c606-47f6-8446-b68fa7c75f52"
+            favTeam:
+              type: string
+              description: Id da equipa favorita
+              example: "2c791ffc-4b18-4241-b886-37551371410a"
 
     responses:
       400:
-        description: Erro do lado do cliente. O email ainda não foi registado.
+        description: O utilizador ainda não foi registado.
         schema:
-          id: error1
+          id: error4
           properties:
             status:
               type: boolean
@@ -28,11 +32,11 @@ Client Registration
             message:
               type: string
               description: Uma mensagem que contém detalhes sobre os resultados da operação.
-              example: "This user email has already been registered previously."
+              example: 'There was an error adding the new user.'
       200:
-        description: Retorna um bolean a indicar o resultado da operação e o id do utilizador gerado após o seu registo.
+        description: Retorna um bolean a indicar o resultado da operação, o id do utilizador e o id da equipa favorita do respetivo utilizador.
         schema:
-          id: result1
+          id: result4
           properties:
             status:
               type: boolean
@@ -41,3 +45,7 @@ Client Registration
               type: string
               description: É o id que fica associado ao utilizador após o seu registo na aplicação.
               example: "8ac82a72-c606-47f6-8446-b68fa7c75f52"
+            favTeam:
+              type: string
+              description: Id da equipa favorita
+              example: "2c791ffc-4b18-4241-b886-37551371410a"

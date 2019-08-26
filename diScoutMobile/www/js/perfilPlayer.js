@@ -4,6 +4,7 @@ function loadPlayer() {
 }
 
 function registarAction() {
+  localStorage.removeItem("buttonId");
   window.location.replace("discout.html");
 }
 

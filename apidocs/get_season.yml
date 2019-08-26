@@ -1,0 +1,99 @@
+Get Season
+    Este método serve para retornar todos os jogos de uma determinada temporada.---
+    tags:
+      - APK feedback
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: Deve-se colocar o id da temporada para retornar a informação desta.
+
+    responses:
+      400:
+        description: Não existe nenhuma temporada criada ou não há jogos registados nessa mesma temporada.
+        schema:
+          id: error6
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            message:
+              type: string
+              description: Uma mensagem que contém detalhes sobre os resultados da operação.
+              example: 'Unable to get season. / Season without any games assigned.'
+      200:
+        description: Retorna a informação da temporada
+        schema:
+          id: result6
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            season:
+              type: object
+              description: Contém a informação referente à temporada
+              properties:
+                games:
+                  type: object
+                  description: Contém a informação do jogo
+                  properties:
+                    awayTeamId:
+                      type: string
+                      description: Descreve o id da equipa visitante
+                      example: "14d6f50a-67c9-4cac-939d-c5d7da00c9b0"
+                    date:
+                      type: string
+                      description: Descreve a data que se realizou o jogo
+                      example: "14/04/2019"
+                    description:
+                      type: string
+                      description: Descreve o nome da competição
+                      example: "Campeonato Nacional de Iniciados 1ª Divisão"
+                    fields:
+                      type: object
+                      description: Descreve as caraterísticas do campo em que se irá realizar o jogo
+                      properties:
+                        address:
+                          type: string
+                          description: Descreve a morada aonde se irá realizar o jogo
+                          example: "Rua de Sacavém, 52"
+                        latt:
+                          type: string
+                          description: Descreve a latitude em que se encontra o estádio
+                          example: ""
+                        logt:
+                          type: string
+                          description: Descreve a longitude em que se encontra o estádio
+                          example: ""
+                        name:
+                          type: string
+                          description: Descreve o nome do estádio
+                          example: "Estádio de Sacavém"
+                    homeTeamId:
+                      type: string
+                      description: Descreve o id da equipa visitada
+                      example: "7f67e48e-69ab-4156-b94f-0fd0e1e937b8"
+                    hour:
+                      type: string
+                      description: Descreve a hora de início do jogo
+                      example: "11:00"
+                    uuid:
+                      type: string
+                      description: Refere-se ao id do jogo
+                      example: "d42bac0b-34b1-44c0-8513-76d8015063d7"
+                info:
+                  type: object
+                  description: Descreve a informação da temporada
+                  properties:
+                    name:
+                      type: string
+                      description: Descreve a época
+                      example: "2018/2019"
+                    uuid:
+                      type: string
+                      description: Refere-se ao id da temporada
+                      example: "6fd6a8e9-6b62-4260-97a4-ceba4057d667"
+
+

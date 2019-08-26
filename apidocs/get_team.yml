@@ -1,0 +1,107 @@
+Get Team
+    Este método serve para retornar a informação de uma determinada equipa.---
+    tags:
+      - APK feedback
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: Deve-se colocar o id da equipa para retornar a informação desta.
+
+    responses:
+      400:
+        description: Não existe nenhuma equipa criada no sistema ou a equipa não tem jogadores associados.
+        schema:
+          id: error5
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            message:
+              type: string
+              description: Uma mensagem que contém detalhes sobre os resultados da operação.
+              example: 'Unable to get team. / Team without any players assigned.'
+      200:
+        description: Retorna a informação da equipa
+        schema:
+          id: result5
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            team:
+              type: object
+              description: Mostra a informação completa da equipa, inclusive os jogadores que nela atuam.
+              properties:
+                info:
+                  type: object
+                  description: Descreve a informação geral da equipa
+                  properties:
+                    classification:
+                      type: string
+                      description: Descreve o escalão da equipa
+                      example: "Iniciados 2004"
+                    description:
+                      type: string
+                      description: Descreve pormenorizadamente a que equipa esta informação se refere
+                      example: "Equipa dos iniciados do Padroense Futebol 11"
+                    name:
+                      type: string
+                      description: Descreve o nome e o escalão da equipa
+                      example: "Padroense sub-15"
+                    uuid:
+                      type: string
+                      description: Refere-se ao id da equipa
+                      example: "2c791ffc-4b18-4241-b886-37551371410a"
+                players:
+                  type: array
+                  description: É o array que armazena a informação do jogador
+                  items:
+                    type: object
+                    properties:
+                      actualTeam:
+                        type: string
+                        description: Descreve o id da equipa
+                        example: "2c791ffc-4b18-4241-b886-37551371410a"
+                      description:
+                        type: string
+                        description: Descreve a sigla da posição aonde joga o jogador
+                        example: "ED"
+                      email:
+                        type: string
+                        description: Descreve o email do jogador
+                        example: "david_rosas@gmail.com"
+                      mobile:
+                        type: string
+                        description: Descreve o número de telemóvel do jogador
+                        example: "null"
+                      name:
+                        type: string
+                        description: Descreve o nome do jogador
+                        example: "David Rosas"
+                      nick:
+                        type: string
+                        description: Descreve o nickname do jogador
+                        example: "rosinha"
+                      parentId:
+                        type: string
+                        description: Descreve o id do familiar do jogador
+                        example: "TBD"
+                      picture:
+                        type: string
+                        description: Descreve a fotografia do jogador
+                        example: "null"
+                      position:
+                        type: string
+                        description: Descreve a posição aonde atua o jogador
+                        example: "Extremo direito"
+                      uuid:
+                        type: string
+                        description: Descreve o id do jogador
+                        example: "c3f1fee0-82a1-4392-99cf-29aff2deb089"
+
+
+
+

@@ -6,7 +6,7 @@ Client Authentication
       - application/json
     parameters:
       - in: body
-        name: body
+        name: body1
         description: Credenciais do utilizador
         schema:
           type: object
@@ -34,7 +34,7 @@ Client Authentication
               description: Uma mensagem que contém detalhes sobre os resultados da operação.
               example: "The username and password are incorrect!"
       200:
-        description: Retorna um token para garantir a segurança na autenticação e um id que fica associado ao utilizador.
+        description: Retorna um token para garantir a segurança na autenticação e o id que fica associado ao utilizador.
         schema:
           id: result
           properties:

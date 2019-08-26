@@ -1,0 +1,54 @@
+Get All Teams
+    Este método serve para retornar todas as equipas armazenadas na base de dados.---
+    tags:
+      - APK feedback
+    parameters:
+      - in: path
+
+    responses:
+      400:
+        description: Não existe equipas na base de dados.
+        schema:
+          id: error8
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            message:
+              type: string
+              description: Uma mensagem que contém detalhes sobre os resultados da operação.
+              example: 'No teams available'
+      200:
+        description: Retorna informações gerais das equipas
+        schema:
+          id: result8
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            teams:
+             type: array
+             description: É o array que armazena a informação geral das equipas
+             items:
+               type: object
+               properties:
+                  classification:
+                    type: string
+                    description: Descreve o escalão da equipa
+                    example: "Iniciados 2004"
+                  description:
+                    type: string
+                    description: Descreve pormenorizadamente a que equipa esta informação se refere
+                    example: "Equipa dos iniciados do Padroense Futebol 11"
+                  name:
+                    type: string
+                    description: Descreve o nome e o escalão da equipa
+                    example: "Padroense sub-15"
+                  uuid:
+                    type: string
+                    description: Refere-se ao id da equipa
+                    example: "2c791ffc-4b18-4241-b886-37551371410a"
+
+
+
+

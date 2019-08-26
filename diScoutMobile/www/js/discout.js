@@ -22,42 +22,55 @@ function addEvent(event) {
       if (eventId) {
         switch (eventId) {
           case "Passe":
+            localStorage.setItem("buttonId", "Passe");
             window.location.replace("discout.html");
             break;
           case "Remate":
+            localStorage.setItem("buttonId", "Remate");
             window.location.replace("remate.html");
             break;
           case "Perda":
+            localStorage.setItem("buttonId", "Perda");
             window.location.replace("perda.html");
             break;
           case "Interrupcao":
+            localStorage.setItem("buttonId", "Interrupcao");
             window.location.replace("interrupcao.html");
             break;
           case "InterrupcaoPerda":
+            localStorage.setItem("buttonId", "InterrupcaoPerda");
             window.location.replace("interrupcao.html");
             break;
           case "Recuperacao":
+            localStorage.setItem("buttonId", "Recuperacao");
             window.location.replace("discout.html");
             break;
           case "ParaFora":
+            localStorage.setItem("buttonId", "ParaFora");
             window.location.replace("perda.html");
             break;
           case "FaltaSofrida":
+            localStorage.setItem("buttonId", "FaltaSofrida");
             window.location.replace("discout.html");
             break;
           case "LinhaLateralSofrida":
+            localStorage.setItem("buttonId", "LinhaLateralSofrida");
             window.location.replace("discout.html");
             break;
           case "LinhaFinalSofrida":
+            localStorage.setItem("buttonId", "LinhaFinalSofrida");
             window.location.replace("discout.html");
             break;
           case "FaltaCometida":
+            localStorage.setItem("buttonId", "FaltaCometida");
             window.location.replace("perda.html");
             break;
           case "LinhaLateralCometida":
+            localStorage.setItem("buttonId", "LinhaLateralCometida");
             window.location.replace("perda.html");
             break;
           case "LinhaFinalCometida":
+            localStorage.setItem("buttonId", "LinhaFinalCometida");
             window.location.replace("perda.html");
             break;
         }
@@ -69,59 +82,54 @@ function addEvent(event) {
   });
 }
 
-/*function changeRemate() {
-  window.location.replace("remate.html");
-}*/
-
-/*function changePerda() {
-  window.location.replace("perda.html");
-}*/
-
-/*function changeInterrupcao() {
-  window.location.replace("interrupcao.html");
-}*/
-
-/*function paraFora() {
-  window.location.replace("perda.html");
-}*/
-
-/*function faltaSofrida() {
-  window.location.replace("discout.html");
-}*/
-
-/*function faltaCometida() {
-  window.location.replace("perda.html");
-}*/
-
-/*function linhaLateralSofrida() {
-  window.location.replace("discout.html");
-}*/
-
-/*function linhaLateralCometida() {
-  window.location.replace("perda.html");
-}*/
-
-/*function linhaFinalSofrida() {
-  window.location.replace("discout.html");
-}*/
-
-/*function linhaFinalCometida() {
-  window.location.replace("perda.html");
-}*/
-
-/*function interrupcaoPerda() {
-  window.location.replace("interrupcao.html");
-}*/
-
-/*function recuperacao() {
-  window.location.replace("discout.html");
-}*/
-
-
-function retro_perfilPlayer() {
-  window.location.replace("perfilPlayer.html");
+function retroceder() {
+  var buttonId = localStorage.getItem("buttonId");
+  switch (buttonId) {
+    case null:
+      window.location.replace("perfilPlayer.html");
+      break;
+    case "Passe":
+      window.location.replace("discout.html");
+      break;
+    case "Remate":
+      window.location.replace("discout.html");
+      break;
+    case "Perda":
+      window.location.replace("discout.html");
+      break;
+    case "Interrupcao":
+      window.location.replace("discout.html");
+      break;
+    case "InterrupcaoPerda":
+      window.location.replace("perda.html");
+      break;
+    case "Recuperacao":
+      window.location.replace("perda.html");
+      break;
+    case "ParaFora":
+      window.location.replace("remate.html");
+      break;
+    case "FaltaSofrida":
+      window.location.replace("interrupcao.html");
+      break;
+    case "LinhaLateralSofrida":
+      window.location.replace("interrupcao.html");
+      break;
+    case "LinhaFinalSofrida":
+      window.location.replace("interrupcao.html");
+      break;
+    case "FaltaCometida":
+      window.location.replace("interrupcao.html");
+      break;
+    case "LinhaLateralCometida":
+      window.location.replace("interrupcao.html");
+      break;
+    case "LinhaFinalCometida":
+      window.location.replace("interrupcao.html");
+      break;
+  }
 }
 
 function terminar_jogo() {
-  
+  window.location.replace("perfilPlayer.html");
 }

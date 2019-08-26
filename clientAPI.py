@@ -128,6 +128,7 @@ def get_user(id):
 
 
 @client_api.route('/user/fav', methods=['POST'])
+@swag_from('./apidocs/set_user_fav_team.yml')
 def set_user_fav_team():
     data = request.values
     headers = request.headers
@@ -157,6 +158,7 @@ def set_user_fav_team():
 
 
 @client_api.route('/team/<id>', methods=['GET'])
+@swag_from('./apidocs/get_team.yml')
 def getTeam(id):
     headers = request.headers
 
@@ -196,6 +198,7 @@ def getTeam(id):
 
 
 @client_api.route('/season/<id>', methods=['GET'])
+@swag_from('./apidocs/get_season.yml')
 def getSeason(id):
     headers = request.headers
 
@@ -235,6 +238,7 @@ def getSeason(id):
 
 
 @client_api.route('/player/<id>', methods=['GET'])
+@swag_from('./apidocs/get_player.yml')
 def getPlayer(id):
     headers = request.headers
 
@@ -274,6 +278,7 @@ def getPlayer(id):
 
 
 @client_api.route('/teams', methods=['GET'])
+@swag_from('./apidocs/get_allTeams.yml')
 def getAllTeams():
     headers = request.headers
 
@@ -313,6 +318,7 @@ def getUserStatistics(id):
 
 
 @client_api.route('/event', methods=['POST'])
+@swag_from('./apidocs/add_event.yml')
 def add_event():
     data = jsonify(request.values)
     print("Add a single event...")
@@ -325,6 +331,7 @@ def add_event():
 
 
 @client_api.route('/events', methods=['POST'])
+@swag_from('./apidocs/add_events.yml')
 def add_events():
     print("Add multiple events...")
     if not request.json:
@@ -338,6 +345,7 @@ def add_events():
 
 
 @client_api.route('/game/<id>', methods=['GET'])
+@swag_from('./apidocs/get_game.yml')
 def getGame(id):
     headers = request.headers
 
@@ -366,50 +374,6 @@ def getGame(id):
             return jsonify({'status': True, 'game': game}), 201
         else:
             return jsonify({'status': False, 'message': 'Unable to get Game.'}), 400
-    else:
-        return jsonify({'status': False, 'message': 'The request was made from a non-authenticated client'}), 400
-
-
-@client_api.route('/update', methods=['POST'])
-def update():
-    data = request.values
-    headers = request.headers
-
-    clientID = ''
-    apiKey = ''
-
-    # used to validate id the headers are being passed or not
-    if all(header in headers for header in ("clientID", "apiKey")):
-        clientID = headers['clientID']
-        apiKey = headers['apiKey']
-    else:
-        print("HEADERS DO NOT EXIST")
-
-    # authenticate the clientID
-    if auth.authenticate_client(clientID, apiKey):
-        if config['GENERAL']['authentication'] == "ON":
-            try:
-                jwt.decode(headers['x-access-token'], config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
-            except jwt.exceptions.DecodeError:
-                return jsonify({'status': False, 'message': 'Invalid client token'}), 400
-            except jwt.exceptions.ExpiredSignature:
-                return jsonify({'status': False, 'message': 'Token has expired'}), 400
-
-        _UUID = str(uuid.uuid4())
-        currDate = datetime.datetime.now()
-        stat = {'uuid': _UUID, 'passe': data['passe'], 'remate': data['remate'], 'paraFora': data['paraFora'],
-                'recuperacaoDeBola': data['recuperacaoDeBola'], 'perdaDeBola': data['perdaDeBola'],
-                'faltaSofrida': data['faltaSofrida'],
-                'bolaFundoLateralSofrida': data['bolaFundoLateralSofrida'],
-                'bolaFundoLinhaFinalSofrida': data['bolaFundoLinhaFinalSofrida'],
-                'faltaCometida': data['faltaCometida'], 'bolaFundoLateralCometida': data['bolaFundoLateralCometida'],
-                'bolaFundoLinhaFinalCometida': data['bolaFundoLinhaFinalCometida'],
-                'PlayerId': data['playerId'], 'createdAt': str(currDate), 'modifiedAt': str(currDate)}
-
-        if db.insertIntoCollection("stats", stat):
-            return jsonify({'status': True, 'statId': _UUID}), 201
-        else:
-            return jsonify({'status': False, 'message': 'There was an error adding stats.'}), 400
     else:
         return jsonify({'status': False, 'message': 'The request was made from a non-authenticated client'}), 400
 

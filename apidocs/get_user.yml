@@ -1,4 +1,4 @@
-Client Get_user
+Get User
     Este método serve para retornar as equipas favoritas de um determinado utilizador.---
     tags:
       - APK feedback
@@ -14,7 +14,7 @@ Client Get_user
       400:
         description: O utilizador não contém nenhuma equipa favorita.
         schema:
-          id: error
+          id: error2
           properties:
             status:
               type: boolean
@@ -26,7 +26,7 @@ Client Get_user
       200:
         description: Retorna a informação do utilizador
         schema:
-          id: result
+          id: result2
           properties:
             status:
               type: boolean
