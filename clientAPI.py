@@ -323,11 +323,11 @@ def add_event():
     data = jsonify(request.values)
     print("Add a single event...")
     if not data.json:
-        return jsonify({'status': 'True', 'message': 'Wrong document type'}), 400
+        return jsonify({'status': False, 'message': 'Wrong document type'}), 400
     success = db.insertEvent(data.json)
     if not success:
-        return jsonify({'status': 'True', 'message': 'Insertion not successful'}), 400
-    return jsonify({'status': 'True', 'message': 'Insertion successful'}), 201
+        return jsonify({'status': False, 'message': 'Insertion not successful'}), 400
+    return jsonify({'status': True, 'message': 'Insertion successful'}), 201
 
 
 @client_api.route('/events', methods=['POST'])
@@ -339,9 +339,9 @@ def add_events():
     else:
         success = db.insertEvents(request.json)
         if not success:
-            return jsonify({'status': 'True', 'message': 'Insertion not successful'}), 400
+            return jsonify({'status': False, 'message': 'Insertion not successful'}), 400
         else:
-            return jsonify({'status': 'True', 'message': 'All events were registered with success!'}), 201
+            return jsonify({'status': True, 'message': 'All events were registered with success!'}), 201
 
 
 @client_api.route('/game/<id>', methods=['GET'])

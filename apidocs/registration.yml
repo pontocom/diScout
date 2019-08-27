@@ -1,4 +1,4 @@
-Client Registration
+Client Registration - ClientAPI
     Este método serve para registar o utilizador.---
     tags:
       - APK feedback
@@ -7,13 +7,13 @@ Client Registration
     parameters:
       - in: body
         name: body
-        description: Credenciais do registo do utilizador
+        description: Credenciais do registo do utilizador.
         schema:
           type: object
           properties:
             email:
               type: string
-              description: Email do utilizador
+              description: Email do utilizador.
               example: "david.cadeiras@iscte-iul.pt"
 
     responses:
@@ -25,6 +25,7 @@ Client Registration
             status:
               type: boolean
               description: O estado indica o resultado da operação.
+              example: False
             message:
               type: string
               description: Uma mensagem que contém detalhes sobre os resultados da operação.

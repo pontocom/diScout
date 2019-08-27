@@ -1,4 +1,4 @@
-Client Authentication
+Client Authentication - ClientAPI
     Este método serve para o utilizador autenticar-se à aplicação de forma a utilizá-la.---
     tags:
       - APK feedback
@@ -7,28 +7,29 @@ Client Authentication
     parameters:
       - in: body
         name: body1
-        description: Credenciais do utilizador
+        description: Credenciais do utilizador.
         schema:
           type: object
           properties:
             email:
               type: string
-              description: Email do utilizador
+              description: Email do utilizador.
               example: "david.cadeiras@iscte-iul.pt"
             password:
               type: string
-              description: Password do utilizador
+              description: Password do utilizador.
               example: "IGE2014"
 
     responses:
       400:
-        description: Erro do lado do cliente. As credenciais fornecidas estão incorretas
+        description: Erro do lado do cliente. As credenciais fornecidas estão incorretas.
         schema:
           id: error
           properties:
             status:
               type: boolean
               description: O estado indica o resultado da operação.
+              example: False
             message:
               type: string
               description: Uma mensagem que contém detalhes sobre os resultados da operação.
@@ -40,7 +41,7 @@ Client Authentication
           properties:
             status:
               type: boolean
-              description: A status code indicating the result of the operation
+              description: O estado indica o resultado da operação.
             token:
               type: string
               description: Token de sessão. Permite auntenticar o utilizador ao realizar operações.

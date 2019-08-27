@@ -7,6 +7,7 @@ import configparser
 import bcrypt
 import hashlib
 import jwt
+from flasgger.utils import swag_from
 
 admin_api = Blueprint('admin_api', __name__)
 config = configparser.ConfigParser()
@@ -15,6 +16,7 @@ config.read('config.ini')
 
 # Register a new app on the system
 @admin_api.route('/app/reg', methods=['POST'])
+@swag_from('./apidocs/register_app.yml')
 def register():
     data = request.values
     print("Receiving request to register APP => " + data['name'])
@@ -37,6 +39,7 @@ def register():
 
 
 @admin_api.route('/team', methods=['POST'])
+@swag_from('./apidocs/add_team.yml')
 def addTeam():
     data = request.values
     headers = request.headers
@@ -63,6 +66,7 @@ def addTeam():
 
 
 @admin_api.route('/player', methods=['POST'])
+@swag_from('./apidocs/add_player.yml')
 def addPlayer():
     data = request.values
     headers = request.headers
@@ -96,6 +100,7 @@ def addGame():
 
 
 @admin_api.route('/season', methods=['POST'])
+@swag_from('./apidocs/add_season.yml')
 def addSeason():
     data = request.values
     headers = request.headers
@@ -122,6 +127,7 @@ def addSeason():
 
 
 @admin_api.route('/game', methods=['POST'])
+@swag_from('./apidocs/add_game.yml')
 def addGame():
     data = request.values
     headers = request.headers

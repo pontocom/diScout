@@ -1,0 +1,88 @@
+Add Game - AdminAPI
+    Este método serve para adicionar um jogo ao sistema.---
+    tags:
+      - APK feedback
+    consumes:
+      - application/json
+    parameters:
+      - in: body
+        name: body
+        description: Deve colocar as informações acerca do jogo.
+        schema:
+          type: object
+          properties:
+            homeTeamId:
+              type: string
+              description: Deve colocar o id da equipa visitada
+              example: "7f67e48e-69ab-4156-b94f-0fd0e1e937b8"
+            awayTeamId:
+              type: string
+              description: Descreve o id da equipa visitante.
+              example: "14d6f50a-67c9-4cac-939d-c5d7da00c9b0"
+            date:
+              type: string
+              description: Deve colocar a data que se realizou o jogo.
+              example: "14/04/2019"
+            description:
+              type: string
+              description: Deve colocar o nome da competição.
+              example: "Campeonato Nacional de Iniciados 1ª Divisão"
+            fields:
+              type: object
+              description: Deve colocar as caraterísticas do campo em que se irá realizar o jogo.
+              properties:
+                address:
+                  type: string
+                  description: Deve colocar a morada aonde se irá realizar o jogo.
+                  example: "Rua de Sacavém, 52"
+                latt:
+                  type: string
+                  description: Deve colocar a latitude em que se encontra o estádio.
+                  example: ""
+                logt:
+                  type: string
+                  description: Deve colocar a longitude em que se encontra o estádio.
+                  example: ""
+                name:
+                  type: string
+                  description: Deve colocar o nome do estádio.
+                  example: "Estádio de Sacavém"
+            hour:
+              type: string
+              description: Deve colocar a hora de início do jogo.
+              example: "11:00"
+            result:
+              type: string
+              description: Deve colocar o resultado final do jogo.
+              example: "3-0"
+            season:
+              type: string
+              description: Deve colocar o id da temporada.
+              example: "6fd6a8e9-6b62-4260-97a4-ceba4057d667"
+
+    responses:
+      400:
+        description: Houve um erro ao adicionar o jogo à base de dados.
+        schema:
+          id: error15
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+              example: False
+            message:
+              type: string
+              description: Uma mensagem que contém detalhes sobre os resultados da operação.
+              example: 'There was an error adding the new game.'
+      200:
+        description: Retorna um bolean com o resultado da operação e um id que é gerado pelo sistema.
+        schema:
+          id: result15
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            gameId:
+              type: string
+              description: É gerado um id que irá corresponder ao jogo.
+              example: "6fd6a8e9-6b62-4260-97a4-ceba4057d667"

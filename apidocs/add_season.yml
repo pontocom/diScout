@@ -1,0 +1,45 @@
+Add Season - AdminAPI
+    Este método serve para adicionar uma temporada ao sistema.---
+    tags:
+      - APK feedback
+    consumes:
+      - application/json
+    parameters:
+      - in: body
+        name: body
+        description: Deve colocar a época desportiva.
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Deve colocar o ano de início e o de fim da época desportiva.
+              example: "2019/2020"
+
+    responses:
+
+      400:
+        description: Houve um erro ao adicionar a temporada à base de dados.
+        schema:
+          id: error14
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+              example: False
+            message:
+              type: string
+              description: Uma mensagem que contém detalhes sobre os resultados da operação.
+              example: 'There was an error adding the new season.'
+      200:
+        description: Retorna um bolean com o resultado da operação e um id que é gerado pelo sistema.
+        schema:
+          id: result14
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            seasonId:
+              type: string
+              description: É gerado um id que irá corresponder à temporada.
+              example: "6fd6a8e9-6b62-4260-97a4-ceba4057d667"

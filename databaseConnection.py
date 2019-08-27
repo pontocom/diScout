@@ -226,7 +226,8 @@ def getGame(id):
                  },
                  'date': game['date'],
                  'hour': game['hour'],
-                 'description': game['description']}
+                 'description': game['description'],
+                 'result':game['result']}
         return _game
 
 

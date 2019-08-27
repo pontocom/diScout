@@ -1,0 +1,60 @@
+Registar APP - AdminAPI
+    Este método serve para registar a app na API para ser usá-lo no futuro.---
+    tags:
+      - APK feedback
+    consumes:
+      - application/json
+    parameters:
+      - in: body
+        name: body
+        description: Deve colocar as credenciais para registar a app na API.
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Deve colocar o nome da app.
+              example: "diScout Mobile App"
+            email:
+              type: string
+              description: Deve colocar o email do utilizador que está a registar a app na API.
+              example: "david@gmail.com"
+            password:
+              type: string
+              description: Deve colocar uma password para garantir o acesso à app no futuro.
+              example: "12345"
+            description:
+              type: string
+              description: Deve colocar uma breve descrição acerca da app.
+              example: "Esta é a app oficial do sistema diScout."
+
+    responses:
+      400:
+        description: Houve um erro ao registar a aplicação na API.
+        schema:
+          id: error11
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+              example: False
+            message:
+              type: string
+              description: Uma mensagem que contém detalhes sobre os resultados da operação.
+              example: 'Application registration has failed'
+      200:
+        description: Retorna um bolean com o resultado da operação e dois id's que são gerados pelo sistema.
+        schema:
+          id: result11
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            appId:
+              type: string
+              description: É gerado um id que irá corresponder à app.
+              example: "43b2fcfb-7d08-44c7-a0c2-3487dc186b3a"
+            apiKey:
+              type: string
+              description: É gerado um id que servirá para aceder à app.
+              example: "7042495963a92105558bd21f06e3ab8c0f5a1e28"

@@ -1,4 +1,4 @@
-Get Player
+Get Player - ClientAPI
     Este método serve para retornar a informação de um determinado jogador.---
     tags:
       - APK feedback
@@ -14,66 +14,67 @@ Get Player
       400:
         description: Não existe nenhum jogador registado na base de dados ou não existe estatísticas associadas ao jogador.
         schema:
-          id: error7
+          id: error6
           properties:
             status:
               type: boolean
               description: O estado indica o resultado da operação.
+              example: False
             message:
               type: string
               description: Uma mensagem que contém detalhes sobre os resultados da operação.
               example: 'Unable to get player. / Player without any stats registered.'
       200:
-        description: Retorna a informação do jogador
+        description: Retorna a informação do jogador.
         schema:
-          id: result7
+          id: result6
           properties:
             status:
               type: boolean
               description: O estado indica o resultado da operação.
             players:
               type: object
-              description: É o array que armazena a informação do jogador
+              description: É o array que armazena a informação do jogador.
               properties:
                 actualTeam:
                   type: string
-                  description: Descreve o id da equipa
+                  description: Descreve o id da equipa.
                   example: "2c791ffc-4b18-4241-b886-37551371410a"
                 description:
                   type: string
-                  description: Descreve a sigla da posição aonde joga o jogador
+                  description: Descreve a sigla da posição aonde joga o jogador.
                   example: "ED"
                 email:
                   type: string
-                  description: Descreve o email do jogador
+                  description: Descreve o email do jogador.
                   example: "david_rosas@gmail.com"
                 mobile:
                   type: string
-                  description: Descreve o número de telemóvel do jogador
+                  description: Descreve o número de telemóvel do jogador.
                   example: "null"
                 name:
                   type: string
-                  description: Descreve o nome do jogador
+                  description: Descreve o nome do jogador.
                   example: "David Rosas"
                 nick:
                   type: string
-                  description: Descreve o nickname do jogador
+                  description: Descreve o nickname do jogador.
                   example: "rosinha"
                 parentId:
                   type: string
-                  description: Descreve o id do familiar do jogador
+                  description: Descreve o id do familiar do jogador.
                   example: "TBD"
                 picture:
                   type: string
-                  description: Descreve a fotografia do jogador
+                  description: Descreve a fotografia do jogador.
                   example: "null"
                 position:
                   type: string
-                  description: Descreve a posição aonde atua o jogador
+                  description: Descreve a posição aonde atua o jogador.
                   example: "Extremo direito"
                 uuid:
                   type: string
-                  description: Descreve o id do jogador
+                  description: Descreve o id do jogador.
                   example: "c3f1fee0-82a1-4392-99cf-29aff2deb089"
 
 

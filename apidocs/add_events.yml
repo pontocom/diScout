@@ -1,4 +1,4 @@
-Add Events
+Add Events - ClientAPI
     Este método serve para registar todos os eventos ocorridos durante o jogo.---
     tags:
       - APK feedback
@@ -7,7 +7,7 @@ Add Events
     parameters:
       - in: body
         name: body
-        description: Descreve os parâmetros necessários para registar o evento
+        description: Descreve os parâmetros necessários para registar o evento.
         schema:
           type: array
           description:
@@ -16,38 +16,39 @@ Add Events
             properties:
               userID:
                 type: string
-                description: Corresponde ao id do utilizador
+                description: Corresponde ao id do utilizador.
                 example: "8ac82a72-c606-47f6-8446-b68fa7c75f52"
               appID:
                 type: string
-                description: Corresponde ao id da app
+                description: Corresponde ao id da app.
                 example: "1"
               gameID:
                 type: string
-                description: Corresponde ao id do jogo
+                description: Corresponde ao id do jogo.
                 example: "bbdc55d6-0b4f-4065-a6e8-0712b8028a60"
               playerID:
                 type: string
-                description: Corresponde ao id do jogador
+                description: Corresponde ao id do jogador.
                 example: "12201497-7e51-4140-b5ea-9f879188c05a"
               timestamp:
                 type: string
-                description: Corresponde à hora e data em que o evento foi registado
+                description: Corresponde à hora e data em que o evento foi registado.
                 example: "Sun Aug 18 2019 18:59:22"
               event:
                 type: string
-                description: Corresponde ao evento registado
+                description: Corresponde ao evento registado.
                 example: "Passe"
 
     responses:
       400:
         description: Pode ocorrer dois erros, ou porque o tipo de documento é errado ou os eventos não foram inseridos com sucesso.
         schema:
-          id: error10
+          id: error9
           properties:
             status:
               type: boolean
               description: O estado indica o resultado da operação.
+              example: False
             message:
               type: string
               description: Uma mensagem que contém detalhes sobre os resultados da operação.
@@ -55,7 +56,7 @@ Add Events
       200:
         description: Retorna uma mensagem a informar que todos os eventos foram inseridos com sucesso.
         schema:
-          id: result10
+          id: result9
           properties:
             status:
               type: boolean

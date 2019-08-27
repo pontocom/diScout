@@ -1,4 +1,4 @@
-Get User
+Get User - ClientAPI
     Este método serve para retornar as equipas favoritas de um determinado utilizador.---
     tags:
       - APK feedback
@@ -19,6 +19,7 @@ Get User
             status:
               type: boolean
               description: O estado indica o resultado da operação.
+              example: False
             message:
               type: string
               description: Uma mensagem que contém detalhes sobre os resultados da operação.

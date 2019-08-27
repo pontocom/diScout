@@ -1,0 +1,52 @@
+Add Team - AdminAPI
+    Este método serve para adicionar uma equipa ao sistema.---
+    tags:
+      - APK feedback
+    consumes:
+      - application/json
+    parameters:
+      - in: body
+        name: body
+        description: Deve colocar os dados da equipa.
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Deve colocar o nome e o escalão da equipa.
+              example: "Padroense sub-15"
+            description:
+              type: string
+              description: Deve colocar a informação pormenorizada da equipa.
+              example: "Equipa dos iniciados do Padroense Futebol 11"
+            classification:
+              type: string
+              description: Deve colocar o escalão da equipa.
+              example: "Iniciados 2004"
+
+    responses:
+      400:
+        description: Houve um erro ao adicionar a equipa à base de dados.
+        schema:
+          id: error12
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+              example: False
+            message:
+              type: string
+              description: Uma mensagem que contém detalhes sobre os resultados da operação.
+              example: 'There was an error adding the new team.'
+      200:
+        description: Retorna um bolean com o resultado da operação e um id que é gerado pelo sistema.
+        schema:
+          id: result12
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            teamId:
+              type: string
+              description: É gerado um id que irá corresponder à equipa.
+              example: "I2c791ffc-4b18-4241-b886-37551371410a"

@@ -1,0 +1,76 @@
+Add Player - AdminAPI
+    Este método serve para adicionar um jogador ao sistema.---
+    tags:
+      - APK feedback
+    consumes:
+      - application/json
+    parameters:
+      - in: body
+        name: body
+        description: Deve colocar os dados do jogador.
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Deve colocar o nome do jogador.
+              example: "David Rosas"
+            nick:
+              type: string
+              description: Deve colocar o nickname do jogador.
+              example: "rosinha"
+            email:
+              type: string
+              description: Deve colocar o email do jogador.
+              example: "david_rosas@gmail.com"
+            picture:
+              type: string
+              description: Deve colocar a fotografia do jogador.
+              example: "null"
+            mobile:
+              type: string
+              description: Deve colocar o número de telemóvel do jogador.
+              example: "null"
+            position:
+              type: string
+              description: Deve colocar a posição que atua o jogador.
+              example: "Extremo direito"
+            description:
+              type: string
+              description: Deve colocar a sigla da posição aonde joga o jogador.
+              example: "ED"
+            teamId:
+              type: string
+              description: Deve colocar o id da equipa em que o jogador atua.
+              example: "2c791ffc-4b18-4241-b886-37551371410a"
+            parentId:
+              type: string
+              description: Deve colocar o id do familiar do jogador.
+              example: "TBD"
+
+    responses:
+      400:
+        description: Houve um erro ao adicionar o jogador à base de dados.
+        schema:
+          id: error13
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+              example: False
+            message:
+              type: string
+              description: Uma mensagem que contém detalhes sobre os resultados da operação.
+              example: 'There was an error adding the new player.'
+      200:
+        description: Retorna um bolean com o resultado da operação e um id que é gerado pelo sistema.
+        schema:
+          id: result13
+          properties:
+            status:
+              type: boolean
+              description: O estado indica o resultado da operação.
+            teamId:
+              type: string
+              description: É gerado um id que irá corresponder ao jogador.
+              example: "c3f1fee0-82a1-4392-99cf-29aff2deb089"

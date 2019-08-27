@@ -1,4 +1,4 @@
-User Favorite Team
+User Favorite Team - ClientAPI
     Este método serve para adicionar uma equipa favorita ao utilizador.---
     tags:
       - APK feedback
@@ -13,22 +13,23 @@ User Favorite Team
           properties:
             uuid:
               type: string
-              description: Id do utilizador
+              description: Id do utilizador.
               example: "8ac82a72-c606-47f6-8446-b68fa7c75f52"
             favTeam:
               type: string
-              description: Id da equipa favorita
+              description: Id da equipa favorita.
               example: "2c791ffc-4b18-4241-b886-37551371410a"
 
     responses:
       400:
         description: O utilizador ainda não foi registado.
         schema:
-          id: error4
+          id: error3
           properties:
             status:
               type: boolean
               description: O estado indica o resultado da operação.
+              example: False
             message:
               type: string
               description: Uma mensagem que contém detalhes sobre os resultados da operação.
@@ -36,16 +37,17 @@ User Favorite Team
       200:
         description: Retorna um bolean a indicar o resultado da operação, o id do utilizador e o id da equipa favorita do respetivo utilizador.
         schema:
-          id: result4
+          id: result3
           properties:
             status:
               type: boolean
               description: O estado indica o resultado da operação.
+              example: False
             userId:
               type: string
               description: É o id que fica associado ao utilizador após o seu registo na aplicação.
               example: "8ac82a72-c606-47f6-8446-b68fa7c75f52"
             favTeam:
               type: string
-              description: Id da equipa favorita
+              description: Id da equipa favorita.
               example: "2c791ffc-4b18-4241-b886-37551371410a"
