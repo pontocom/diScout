@@ -17,6 +17,7 @@ function addEvent(event) {
     type: "POST",
     data: body,
     success: function(result) {
+      var position = localStorage.getItem("position");
       //alert(JSON.stringify(result));
       eventId = event.id;
       if (eventId) {
@@ -42,36 +43,190 @@ function addEvent(event) {
             window.location.replace("interrupcao.html");
             break;
           case "Recuperacao":
-            localStorage.setItem("buttonId", "Recuperacao");
-            window.location.replace("discout.html");
-            break;
+            if (
+              position == "GR" ||
+              position == "Gr" ||
+              position == "gr" ||
+              position == "gR" ||
+              position == "GK" ||
+              position == "Gk" ||
+              position == "gk" ||
+              position == "gK"
+            ) {
+              localStorage.setItem("buttonId", "Recuperacao");
+              window.location.replace("discoutGR.html");
+              break;
+            } else {
+              localStorage.setItem("buttonId", "Recuperacao");
+              window.location.replace("discout.html");
+              break;
+            }
           case "ParaFora":
             localStorage.setItem("buttonId", "ParaFora");
             window.location.replace("perda.html");
             break;
           case "FaltaSofrida":
-            localStorage.setItem("buttonId", "FaltaSofrida");
-            window.location.replace("discout.html");
-            break;
-          case "LinhaLateralSofrida":
-            localStorage.setItem("buttonId", "LinhaLateralSofrida");
-            window.location.replace("discout.html");
-            break;
-          case "LinhaFinalSofrida":
-            localStorage.setItem("buttonId", "LinhaFinalSofrida");
-            window.location.replace("discout.html");
-            break;
+            if (
+              position == "GR" ||
+              position == "Gr" ||
+              position == "gr" ||
+              position == "gR" ||
+              position == "GK" ||
+              position == "Gk" ||
+              position == "gk" ||
+              position == "gK"
+            ) {
+              localStorage.setItem("buttonId", "FaltaSofrida");
+              window.location.replace("discoutGR.html");
+              break;
+            } else {
+              localStorage.setItem("buttonId", "FaltaSofrida");
+              window.location.replace("discout.html");
+              break;
+            }
+          case "LançamentoFavor":
+            if (
+              position == "GR" ||
+              position == "Gr" ||
+              position == "gr" ||
+              position == "gR" ||
+              position == "GK" ||
+              position == "Gk" ||
+              position == "gk" ||
+              position == "gK"
+            ) {
+              localStorage.setItem("buttonId", "LançamentoFavor");
+              window.location.replace("discoutGR.html");
+              break;
+            } else {
+              localStorage.setItem("buttonId", "LançamentoFavor");
+              window.location.replace("discout.html");
+              break;
+            }
+
+          case "PontapeBalizaFavor":
+            if (
+              position == "GR" ||
+              position == "Gr" ||
+              position == "gr" ||
+              position == "gR" ||
+              position == "GK" ||
+              position == "Gk" ||
+              position == "gk" ||
+              position == "gK"
+            ) {
+              localStorage.setItem("buttonId", "PontapeBalizaFavor");
+              window.location.replace("discoutGR.html");
+              break;
+            } else {
+              localStorage.setItem("buttonId", "PontapeBalizaFavor");
+              window.location.replace("discout.html");
+              break;
+            }
+
           case "FaltaCometida":
-            localStorage.setItem("buttonId", "FaltaCometida");
+            if (
+              position == "GR" ||
+              position == "Gr" ||
+              position == "gr" ||
+              position == "gR" ||
+              position == "GK" ||
+              position == "Gk" ||
+              position == "gk" ||
+              position == "gK"
+            ) {
+              localStorage.setItem("buttonId", "FaltaCometida");
+              window.location.replace("perda.html");
+              break;
+            } else {
+              localStorage.setItem("buttonId", "FaltaCometida");
+              window.location.replace("perda.html");
+              break;
+            }
+
+          case "LançamentoContra":
+            if (
+              position == "GR" ||
+              position == "Gr" ||
+              position == "gr" ||
+              position == "gR" ||
+              position == "GK" ||
+              position == "Gk" ||
+              position == "gk" ||
+              position == "gK"
+            ) {
+              localStorage.setItem("buttonId", "LançamentoContra");
+              window.location.replace("perda.html");
+              break;
+            } else {
+              localStorage.setItem("buttonId", "LançamentoContra");
+              window.location.replace("perda.html");
+              break;
+            }
+
+          case "PontapeBalizaEquipaAdversaria":
+            if (
+              position == "GR" ||
+              position == "Gr" ||
+              position == "gr" ||
+              position == "gR" ||
+              position == "GK" ||
+              position == "Gk" ||
+              position == "gk" ||
+              position == "gK"
+            ) {
+              localStorage.setItem("buttonId", "PontapeBalizaEquipaAdversaria");
+              window.location.replace("perda.html");
+              break;
+            } else {
+              localStorage.setItem("buttonId", "PontapeBalizaEquipaAdversaria");
+              window.location.replace("perda.html");
+              break;
+            }
+
+          case "PasseRemate":
+            localStorage.setItem("buttonId", "PasseRemate");
+            window.location.replace("passeRemate.html");
+            break;
+          case "PerdaGR":
+            localStorage.setItem("buttonId", "PerdaGR");
             window.location.replace("perda.html");
             break;
-          case "LinhaLateralCometida":
-            localStorage.setItem("buttonId", "LinhaLateralCometida");
+          case "InterrupcaoGR":
+            localStorage.setItem("buttonId", "InterrupcaoGR");
+            window.location.replace("interrupcao.html");
+            break;
+          case "Defesa":
+            localStorage.setItem("buttonId", "Defesa");
+            window.location.replace("defesa.html");
+            break;
+          case "Agarrou":
+            localStorage.setItem("buttonId", "Agarrou");
+            window.location.replace("discoutGR.html");
+            break;
+          case "naoAgarrou":
+            localStorage.setItem("buttonId", "naoAgarrou");
+            window.location.replace("naoAgarrar.html");
+            break;
+          case "PosseDeBola":
+            localStorage.setItem("buttonId", "PosseDeBola");
+            window.location.replace("discoutGR.html");
+            break;
+          case "BolaNaEquipaAdversaria":
+            localStorage.setItem("buttonId", "BolaNaEquipaAdversaria");
             window.location.replace("perda.html");
             break;
-          case "LinhaFinalCometida":
-            localStorage.setItem("buttonId", "LinhaFinalCometida");
-            window.location.replace("perda.html");
+          case "InterrupcaoNaoAgarrar":
+            localStorage.setItem("buttonId", "InterrupcaoNaoAgarrar");
+            window.location.replace("interrupcao.html");
+            break;
+          case "PasseGR":
+            localStorage.setItem("buttonId", "PasseGR");
+            window.location.replace("discoutGR.html");
+            break;
+          case "RemateGR":
+            localStorage.setItem("buttonId", "RemateGR");
+            window.location.replace("remate.html");
             break;
         }
       }
@@ -112,20 +267,53 @@ function retroceder() {
     case "FaltaSofrida":
       window.location.replace("interrupcao.html");
       break;
-    case "LinhaLateralSofrida":
+    case "LançamentoFavor":
       window.location.replace("interrupcao.html");
       break;
-    case "LinhaFinalSofrida":
+    case "PontapeBalizaFavor":
       window.location.replace("interrupcao.html");
       break;
     case "FaltaCometida":
       window.location.replace("interrupcao.html");
       break;
-    case "LinhaLateralCometida":
+    case "LançamentoContra":
       window.location.replace("interrupcao.html");
       break;
-    case "LinhaFinalCometida":
+    case "PontapeBalizaEquipaAdversaria":
       window.location.replace("interrupcao.html");
+      break;
+    case "PasseRemate":
+      window.location.replace("discoutGR.html");
+      break;
+    case "PerdaGR":
+      window.location.replace("discoutGR.html");
+      break;
+    case "InterrupcaoGR":
+      window.location.replace("discoutGR.html");
+      break;
+    case "Defesa":
+      window.location.replace("discoutGR.html");
+      break;
+    case "Agarrou":
+      window.location.replace("defesa.html");
+      break;
+    case "naoAgarrou":
+      window.location.replace("defesa.html");
+      break;
+    case "PosseDeBola":
+      window.location.replace("naoAgarrar.html");
+      break;
+    case "BolaNaEquipaAdversaria":
+      window.location.replace("naoAgarrar.html");
+      break;
+    case "InterrupcaoNaoAgarrar":
+      window.location.replace("naoAgarrar.html");
+      break;
+    case "PasseGR":
+      window.location.replace("discoutGR.html");
+      break;
+    case "RemateGR":
+      window.location.replace("discoutGR.html");
       break;
   }
 }

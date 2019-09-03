@@ -27,9 +27,31 @@
           <div class="pull-left">
             <button
               onclick="addEvent(this)"
-              id="InterrupcaoPerda"
+              id="PasseRemate"
               style="width: 200px; margin-right: 10px;"
               class="bg-success "
+            >
+              Passe / Remate
+            </button>
+          </div>
+          <div class="">
+            <button
+              onclick="addEvent(this)"
+              id="PerdaGR"
+              style="width: 200px; margin-right: 10px;"
+              class="bg-success"
+            >
+              Perda de Bola
+            </button>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="pull-left">
+            <button
+              onclick="addEvent(this)"
+              id="InterrupcaoGR"
+              style="width: 200px; margin-right: 10px;"
+              class="bg-success"
             >
               Interrupção
             </button>
@@ -37,16 +59,17 @@
           <div class="">
             <button
               onclick="addEvent(this)"
-              id="Recuperacao"
+              id="Defesa"
               style="width: 200px; margin-right: 10px;"
               class="bg-success"
             >
-              Recuperação da Bola
+              Defesa
             </button>
           </div>
         </div>
       </div>
-      <div class="retroceder">
+    </div>
+    <div class="retroceder">
         <button
           type="submit"
           style="width: 100px; margin-right: 10px;"
@@ -57,17 +80,16 @@
           Retroceder
         </button>
       </div>
-    </div>
-    <p></p>
-    <div align="center">
-      <button
-        style="width: 200px; margin-right: 10px;"
-        class="btn btn-danger"
-        id="registarAction"
-        onclick="terminar_jogo()"
-      >
-        Terminar Jogo
-      </button>
-    </div>
+      <p></p>
+      <div align="center">
+        <button
+          style="width: 200px; margin-right: 10px;"
+          class="btn btn-danger"
+          id="registarAction"
+          onclick="terminar_jogo()"
+        >
+          Terminar Jogo
+        </button>
+      </div>
   </body>
 </html>

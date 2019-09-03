@@ -27,26 +27,40 @@
           <div class="pull-left">
             <button
               onclick="addEvent(this)"
-              id="InterrupcaoPerda"
+              id="PosseDeBola"
               style="width: 200px; margin-right: 10px;"
               class="bg-success "
             >
-              Interrupção
+              Posse de Bola
             </button>
           </div>
           <div class="">
             <button
               onclick="addEvent(this)"
-              id="Recuperacao"
+              id="BolaNaEquipaAdversaria"
               style="width: 200px; margin-right: 10px;"
               class="bg-success"
             >
-              Recuperação da Bola
+              Bola na Equipa Adversária
             </button>
           </div>
         </div>
+        <div class="col-sm-12">
+          <div class="pull-left">
+            <button
+              onclick="addEvent(this)"
+              id="InterrupcaoNaoAgarrar"
+              style="width: 200px; margin-right: 10px;"
+              class="bg-success"
+            >
+              Interrupção
+            </button>
+          </div>
+          
+        </div>
       </div>
-      <div class="retroceder">
+    </div>
+    <div class="retroceder">
         <button
           type="submit"
           style="width: 100px; margin-right: 10px;"
@@ -57,17 +71,16 @@
           Retroceder
         </button>
       </div>
-    </div>
-    <p></p>
-    <div align="center">
-      <button
-        style="width: 200px; margin-right: 10px;"
-        class="btn btn-danger"
-        id="registarAction"
-        onclick="terminar_jogo()"
-      >
-        Terminar Jogo
-      </button>
-    </div>
+      <p></p>
+      <div align="center">
+        <button
+          style="width: 200px; margin-right: 10px;"
+          class="btn btn-danger"
+          id="registarAction"
+          onclick="terminar_jogo()"
+        >
+          Terminar Jogo
+        </button>
+      </div>
   </body>
 </html>

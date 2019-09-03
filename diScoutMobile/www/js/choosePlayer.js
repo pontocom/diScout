@@ -55,6 +55,7 @@ function selectPlayer(select) {
       for (var i = 0; i < players.length; i++) {
         if (player == players[i].name) {
           localStorage.setItem("idPlayer", players[i].uuid);
+          localStorage.setItem("position", players[i].position);
         }
       }
 
