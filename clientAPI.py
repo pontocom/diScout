@@ -42,7 +42,8 @@ def authentication():
             payload = {'clientId': userData['uuid'], 'email': userData['email'], 'type': userData['type'],
                        'exp': datetime.datetime.utcnow() + datetime.timedelta(
                            seconds=int(config['JWT']['JWT_EXP_DELTA_SECONDS']))}
-            jwt_token = jwt.encode(payload, config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
+            jwt_token = jwt.encode(
+                payload, config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
             return jsonify({'status': True, 'token': jwt_token.decode('utf-8'), 'userId': userData['uuid']}), 201
     else:
         return jsonify({'status': False, 'message': 'The request was made from a non-authenticated client'}), 400
@@ -74,7 +75,8 @@ def registration():
         if db.checkUserEmail(data['email']):
             return jsonify({'status': False, 'message': 'This user email has already been registered previously.'}), 400
         else:
-            password = str(bcrypt.hashpw(bytes(data['password'], 'utf-8'), bcrypt.gensalt()), 'utf8')
+            password = str(bcrypt.hashpw(
+                bytes(data['password'], 'utf-8'), bcrypt.gensalt()), 'utf8')
 
             _UUID = str(uuid.uuid4())
             currDate = datetime.datetime.now()
@@ -176,7 +178,8 @@ def getTeam(id):
     if auth.authenticate_client(clientID, apiKey):
         if config['GENERAL']['authentication'] == "ON":
             try:
-                jwt.decode(headers['x-access-token'], config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
+                jwt.decode(headers['x-access-token'], config['JWT']
+                           ['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
             except jwt.exceptions.DecodeError:
                 return jsonify({'status': False, 'message': 'Invalid client token'}), 400
             except jwt.exceptions.ExpiredSignature:
@@ -216,7 +219,8 @@ def getSeason(id):
     if auth.authenticate_client(clientID, apiKey):
         if config['GENERAL']['authentication'] == "ON":
             try:
-                jwt.decode(headers['x-access-token'], config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
+                jwt.decode(headers['x-access-token'], config['JWT']
+                           ['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
             except jwt.exceptions.DecodeError:
                 return jsonify({'status': False, 'message': 'Invalid client token'}), 400
             except jwt.exceptions.ExpiredSignature:
@@ -256,7 +260,8 @@ def getPlayer(id):
     if auth.authenticate_client(clientID, apiKey):
         if config['GENERAL']['authentication'] == "ON":
             try:
-                jwt.decode(headers['x-access-token'], config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
+                jwt.decode(headers['x-access-token'], config['JWT']
+                           ['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
             except jwt.exceptions.DecodeError:
                 return jsonify({'status': False, 'message': 'Invalid client token'}), 400
             except jwt.exceptions.ExpiredSignature:
@@ -296,7 +301,8 @@ def getAllTeams():
     if auth.authenticate_client(clientID, apiKey):
         if config['GENERAL']['authentication'] == "ON":
             try:
-                jwt.decode(headers['x-access-token'], config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
+                jwt.decode(headers['x-access-token'], config['JWT']
+                           ['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
             except jwt.exceptions.DecodeError:
                 return jsonify({'status': False, 'message': 'Invalid client token'}), 400
             except jwt.exceptions.ExpiredSignature:
@@ -363,7 +369,8 @@ def getGame(id):
     if auth.authenticate_client(clientID, apiKey):
         if config['GENERAL']['authentication'] == "ON":
             try:
-                jwt.decode(headers['x-access-token'], config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
+                jwt.decode(headers['x-access-token'], config['JWT']
+                           ['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
             except jwt.exceptions.DecodeError:
                 return jsonify({'status': False, 'message': 'Invalid client token'}), 400
             except jwt.exceptions.ExpiredSignature:
