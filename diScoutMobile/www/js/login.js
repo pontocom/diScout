@@ -4,6 +4,10 @@ function loginReg() {
   window.location.replace("login.html");
 }
 
+function retroceder() {
+  window.location.replace("index.html");
+}
+
 function openLoginModal() {
   document.getElementById("idLogin").style.display = "block";
 }

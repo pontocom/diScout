@@ -15,13 +15,14 @@
     <script src="js/jquery-3.4.1.min.js"></script>
 
     <script type="text/javascript" src="js/discout.js"></script>
-    
   </head>
   <body
     style="background: url(https://ae01.alicdn.com/kf/HTB1SajMSpXXXXc8XVXXq6xXFXXXz/8x8FT-Spots-Luz-Night-Time-de-Futebol-Campo-de-Futebol-Est-dio-Plataforma-Sob-Encomenda-Da.jpg_640x640.jpg); background-size: cover"
+    onload="load()"
   >
     <div align="center" class="main">
-      <h1>Discout</h1>
+      <h1 id="playerID"></h1>
+      <p></p>
       <div class="row ">
         <div class="col-sm-12" style="margin-bottom: 10px;">
           <div class="pull-left">
@@ -70,26 +71,26 @@
       </div>
     </div>
     <div class="retroceder">
-        <button
-          type="submit"
-          style="width: 100px; margin-right: 10px;"
-          class="btn btn-danger"
-          id="retroceder"
-          onclick="retroceder()"
-        >
-          Retroceder
-        </button>
-      </div>
-      <p></p>
-      <div align="center">
-        <button
-          style="width: 200px; margin-right: 10px;"
-          class="btn btn-danger"
-          id="registarAction"
-          onclick="terminar_jogo()"
-        >
-          Terminar Jogo
-        </button>
-      </div>
+      <button
+        type="submit"
+        style="width: 100px; margin-right: 10px;"
+        class="btn btn-danger"
+        id="retroceder"
+        onclick="retroceder()"
+      >
+        Retroceder
+      </button>
+    </div>
+    <p></p>
+    <div align="center">
+      <button
+        style="width: 200px; margin-right: 10px;"
+        class="btn btn-danger"
+        id="registarAction"
+        onclick="terminar_jogo()"
+      >
+        Terminar Jogo
+      </button>
+    </div>
   </body>
 </html>

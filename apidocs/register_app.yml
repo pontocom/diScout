@@ -1,5 +1,5 @@
 Registar APP - AdminAPI
-    Este método serve para registar a app na API para ser usá-lo no futuro.---
+    Este método serve para registar a app na API para ser usada no futuro.---
     tags:
       - APK feedback
     consumes:

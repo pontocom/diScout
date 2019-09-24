@@ -1,3 +1,9 @@
+var basePath = "localhost:5000";
+
+function sair() {
+  window.location.replace("index.html");
+}
+
 function load() {
   var favTeams = JSON.parse(localStorage.getItem("favTeams"));
   var teams = JSON.parse(localStorage.getItem("teams"));

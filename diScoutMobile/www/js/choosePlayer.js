@@ -1,3 +1,5 @@
+var basePath = "localhost:5000";
+
 function selectPlayer(select) {
     var teamId = JSON.parse(localStorage.getItem("selectedTeam"));
     $.ajax({

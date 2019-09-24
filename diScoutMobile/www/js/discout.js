@@ -2,6 +2,11 @@ var basePath = "localhost:5000";
 var user = JSON.parse(localStorage.getItem("userId"));
 var playerId = localStorage.getItem("idPlayer");
 
+function load() {
+  var player = localStorage.getItem("followPlayer");
+  document.getElementById("playerID").innerHTML = player;
+}
+
 function addEvent(event) {
   var body = {
     userID: user,
