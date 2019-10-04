@@ -1,4 +1,4 @@
-var basePath = "localhost:5000";
+var basePath = "192.168.56.3:5000";
 var user = JSON.parse(localStorage.getItem("userId"));
 var playerId = localStorage.getItem("idPlayer");
 

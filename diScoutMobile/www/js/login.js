@@ -1,4 +1,4 @@
-var basePath = "localhost:5000";
+var basePath = "192.168.56.3:5000";
 
 function loginReg() {
   window.location.replace("login.html");
