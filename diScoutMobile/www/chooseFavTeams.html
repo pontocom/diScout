@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
+<head>
+    <meta charset="utf-8"/>
 
     <meta
-      name="viewport"
-      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"
+            name="viewport"
+            content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"
     />
     <title>Discout</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/discout.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/discout.css"/>
 
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
@@ -17,49 +17,51 @@
 
     <script type="text/javascript" src="js/discout.js"></script>
     <script type="text/javascript" src="js/login.js"></script>
-  </head>
-  <body
-    style="background: url(https://ae01.alicdn.com/kf/HTB1SajMSpXXXXc8XVXXq6xXFXXXz/8x8FT-Spots-Luz-Night-Time-de-Futebol-Campo-de-Futebol-Est-dio-Plataforma-Sob-Encomenda-Da.jpg_640x640.jpg); background-size: cover"
-   >
-    <div align="center" class="main">
-      <h1>Escolha as suas equipas favoritas</h1>
+</head>
+<body
+        style="background: url(https://ae01.alicdn.com/kf/HTB1SajMSpXXXXc8XVXXq6xXFXXXz/8x8FT-Spots-Luz-Night-Time-de-Futebol-Campo-de-Futebol-Est-dio-Plataforma-Sob-Encomenda-Da.jpg_640x640.jpg); background-size: cover"
+>
+<div align="center" class="main">
+    <h1>diScout</h1>
+    <h2>Please select your favourite teams!</h2>
+    <h3>You have to select at least one favourite team!</h3>
 
-      <div class="selectTeam">
+    <div class="selectTeam">
         <label for="eq1">
-          <b> Equipa 1 </b>
-          <select id="ts1" onclick="loadFavTeams(this);">
-            <option> Escolha a sua equipa </option>
-          </select>
+            <b> Team 1 </b>
+            <select id="ts1" onclick="loadFavTeams(this);">
+                <option> Select your team</option>
+            </select>
         </label>
 
         <p></p>
         <label for="eq2">
-          <b> Equipa 2 </b>
-          <select id="ts2" onclick="loadFavTeams(this);" disabled>
-            <option> Escolha a sua equipa </option>
-          </select>
+            <b> Team 2 </b>
+            <select id="ts2" onclick="loadFavTeams(this);" disabled>
+                <option> Select your team</option>
+            </select>
         </label>
 
         <p></p>
         <label for="eq3">
-          <b> Equipa 3 </b>
-          <select id="ts3" onclick="loadFavTeams(this);" disabled>
-            <option> Escolha a sua equipa </option>
-          </select>
+            <b> Team 3 </b>
+            <select id="ts3" onclick="loadFavTeams(this);" disabled>
+                <option> Select your team</option>
+            </select>
         </label>
-      </div>
-      <div class="center-block">
-        <button
-          type="submit"
-          style="width: 100px; margin-right: 10px;"
-          class="btn btn-success"
-          id="confirmTeam"
-          disabled="disabled"
-          onclick="confirmFavTeams()"
-        >
-          Confirmar
-        </button>
-      </div>
     </div>
-  </body>
+    <div class="center-block">
+        <button
+                type="submit"
+                style="width: 100px; margin-right: 10px;"
+                class="btn btn-success"
+                id="confirmTeam"
+                disabled="disabled"
+                onclick="CS_confirmFavTeams()"
+        >
+            Confirm
+        </button>
+    </div>
+</div>
+</body>
 </html>
