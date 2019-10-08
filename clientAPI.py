@@ -152,7 +152,7 @@ def set_user_fav_team():
         print("Client is authenticated - proceed")
         favTeam = {'uuid': data['uuid'], 'favTeam': data['favTeam']}
         if db.insertIntoCollection("userteams", favTeam):
-            return jsonify({'status': True, 'user': data['uuid'], 'favteam': data['favTeam']}), 201
+            return jsonify({'status': True, 'user': data['uuid'], 'favTeam': data['favTeam']}), 201
         else:
             return jsonify({'status': False, 'message': 'There was an error adding the new user.'}), 400
     else:
@@ -286,8 +286,6 @@ def getPlayer(id):
 @swag_from('./apidocs/get_allTeams.yml')
 def getAllTeams():
     headers = request.headers
-
-    print("GET ALL TEAMS")
 
     clientID = ''
     apiKey = ''

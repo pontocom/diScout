@@ -2,11 +2,11 @@
   /*  margin: 20px auto; */
 
   background-color: transparent;
-  grid-template-columns: 100px 100px;
+  grid-template-columns: 200px 200px;
 
   /* grid-row: auto auto; */
-  grid-column-gap: 5px; /* Separar os botões na vertical */
-  grid-row-gap: 5px; /* Separar os botões na horizontal */
+  grid-column-gap: 20px; /* Separar os botões na vertical */
+  grid-row-gap: 20px; /* Separar os botões na horizontal */
 
   display: grid; /* establish flex container */
   flex-wrap: wrap; /* enable flex items to wrap */
@@ -24,6 +24,7 @@
 }
 
 .retroceder {
+
   padding: 30px;
   display:block;
   color: white;
@@ -31,6 +32,7 @@
   position: absolute;
   top: -23px;
   right: -25px;
+
 }
 
 .navbar li {
@@ -38,7 +40,6 @@
 }
 
 .selectTeam {
-  margin-top: 15px;
   color: #fff;
 }
 
@@ -67,22 +68,7 @@
 }
 
 .main h1 {
-  margin-top: 20px;
-  font-style: bold;
-  color: white;
-}
-
-.main h2 {
-  margin-top: 10px;
   font-style: normal;
-  font-size: 16px;
-  color: white;
-}
-
-.main h3 {
-  margin-top: 10px;
-  font-style: normal;
-  font-size: 11px;
   color: white;
 }
 
@@ -110,15 +96,15 @@
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-  padding-top: 5px;
+  padding-top: 60px;
 }
 
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 2% auto 2% auto; /* 5% from the top, 15% from the bottom and centered */
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
-  width: 90%; /* Could be more or less, depending on screen size */
+  width: 80%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */

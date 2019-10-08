@@ -3,4 +3,3 @@ pymongo
 bcrypt
 pyjwt
 flasgger
-flask-cors

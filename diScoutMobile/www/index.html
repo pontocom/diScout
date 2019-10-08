@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -19,7 +20,7 @@
       app.initialize();
     </script>
     <script type="text/javascript" src="js/login.js"></script>
-    <!-- <script type="text/javascript" src="discout.html"></script> ISTO ESTÁ CERTO?????? -->
+    <script type="text/javascript" src="discout.html"></script>
   </head>
 
   <body
@@ -27,12 +28,11 @@
     onload="getAllTeams()"
   >
     <div align="center" class="main">
-      <h1>diScout</h1>
-        <h2>Following your favourite player on the pitch</h2>
+      <h1>Discout</h1>
       
         <button
           onclick="loginReg()"
-          style="margin-right: 10px;"
+          style="width: 100px; margin-right: 10px;"
           class="btn btn-success"
           id="entrar"
         >
@@ -41,11 +41,11 @@
         <button
           onclick="openRegisterModal()"
           type="submit"
-          style="margin-right: 10px;"
+          style="width: 100px; margin-right: 10px;"
           class="btn btn-danger"
           id="registar"
         >
-          Register new user
+          Registar
         </button>
       </div>
 
@@ -104,7 +104,7 @@
             <input
               type="text"
               id="nUser"
-              placeholder="Enter your username"
+              placeholder="Novo Username"
               name="newUser"
               required
             />
@@ -113,17 +113,17 @@
             <input
               type="password"
               id="nPsw"
-              placeholder="Enter your password"
+              placeholder="Nova Password"
               name="newPsw"
               onkeyup="validateRegister();"
               required
             />
 
-            <label for="confPsw"><b>Confirm the password</b> </label>
+            <label for="confPsw"><b>Confirmar Password</b> </label>
             <input
               type="password"
               id="cPsw"
-              placeholder="Confirm the selected password"
+              placeholder="Confirmar Password"
               name="confPsw"
               onkeyup="validateRegister();"
               required
@@ -133,25 +133,25 @@
             <input
               type="text"
               id="rEmail"
-              placeholder="Enter your email"
+              placeholder="Email"
               name="emailRegistar"
               required
             />
 
-            <label for="rDescricao"><b>Description</b> </label>
+            <label for="rDescricao"><b> Descrição </b> </label>
             <input
               type="text"
               id="desc"
-              placeholder="Enter your description"
+              placeholder="Descrição"
               name="rDescricao"
               required
             />
 
-            <label for="rType"><b>Type</b> </label>
+            <label for="rType"><b> Tipo </b> </label>
             <input
               type="text"
               id="tipo"
-              placeholder="Select your type"
+              placeholder="Tipo"
               name="rType"
               required
             />
@@ -165,7 +165,7 @@
               disabled="disabled"
               onclick="register()"
             >
-              Registration
+              Registar
             </button>
           </div>
 
