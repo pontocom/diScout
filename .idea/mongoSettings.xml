@@ -14,17 +14,6 @@
             <SshTunnelingConfiguration />
           </option>
         </ServerConfiguration>
-        <ServerConfiguration>
-          <option name="label" value="diScout@VM" />
-          <option name="serverUrls">
-            <list>
-              <option value="192.168.56.3:27017" />
-            </list>
-          </option>
-          <option name="sshTunnelingConfiguration">
-            <SshTunnelingConfiguration />
-          </option>
-        </ServerConfiguration>
       </list>
     </option>
   </component>
