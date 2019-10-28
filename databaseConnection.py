@@ -120,7 +120,8 @@ def getUser(id):
                    'name': user['name'],
                    'email': user['email'],
                    'description': user['description'],
-                   'type': user['type']}
+                   'type': user['type'],
+                    'teams': [] }
         return _user
     else:
         return None

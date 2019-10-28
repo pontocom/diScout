@@ -20,8 +20,7 @@ config.read('config.ini')
 def register():
     data = request.values
     print("Receiving request to register APP => " + data['name'])
-    password = bcrypt.hashpw(
-        (data['password']).encode('utf-8'), bcrypt.gensalt())
+    password = bcrypt.hashpw((data['password']).encode('utf-8'), bcrypt.gensalt())
     # test = bcrypt.checkpw((data['password']).encode('utf-8'), password)
     # print("Test = " + str(test))
 
@@ -30,12 +29,11 @@ def register():
     _UUID2 = data['email'] + _UUID + str(currDate) + data['password']
     apiKey = hashlib.sha1(_UUID2.encode('utf-8')).hexdigest()
 
-    application = {'uuid': _UUID, 'name': data['name'], 'email': data['email'], 'password': str(
-        password), 'description': data['description'], 'apiKey': apiKey, 'createdAt': str(currDate), 'modifiedAt': str(currDate)}
+    application = {'uuid': _UUID, 'name': data['name'],'email': data['email'],'password': str(password),'description': data['description'],'apiKey': apiKey,'createdAt': str(currDate),'modifiedAt': str(currDate)}
 
     success = db.insertApplication(application)
     if not success:
-        return jsonify({'status': False, 'message': 'Application registration has failed'}), 400
+        return jsonify({'status': False, 'message':'Application registration has failed'}), 400
 
     return jsonify({'status': True, 'appId': _UUID, 'apiKey': apiKey}), 201
 
@@ -49,24 +47,22 @@ def addTeam():
     if auth.authenticate_client(headers['clientID'], headers['apiKey']):
         if config['GENERAL']['authentication'] == "ON":
             try:
-                jwt.decode(headers['x-access-token'], config['JWT']
-                           ['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
+                jwt.decode(headers['x-access-token'], config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
             except jwt.exceptions.DecodeError:
                 return jsonify({'status': False, 'message': 'Invalid client token'}), 400
             except jwt.exceptions.ExpiredSignature:
-                return jsonify({'status': False, 'message': 'Token has expired'}), 400
+                return jsonify({'status' : False, 'message':'Token has expired'}), 400
 
         _UUID = str(uuid.uuid4())
         currDate = datetime.datetime.now()
-        team = {'uuid': _UUID, 'name': data['name'], 'description': data['description'],
-                'classification': data['classification'], 'createdAt': str(currDate), 'modifiedAt': str(currDate)}
+        team = {'uuid': _UUID, 'name': data['name'], 'description': data['description'], 'classification': data['classification'], 'createdAt': str(currDate), 'modifiedAt': str(currDate)}
 
         if db.insertIntoCollection("teams", team):
             return jsonify({'status': True, 'teamId': _UUID}), 201
         else:
             return jsonify({'status': False, 'message': 'There was an error adding the new team.'}), 400
     else:
-        return jsonify({'status': False, 'message': 'The request was made from a non-authenticated client'}), 400
+        return jsonify({'status': False, 'message':'The request was made from a non-authenticated client'}), 400
 
 
 @admin_api.route('/player', methods=['POST'])
@@ -78,18 +74,15 @@ def addPlayer():
     if auth.authenticate_client(headers['clientID'], headers['apiKey']):
         if config['GENERAL']['authentication'] == "ON":
             try:
-                jwt.decode(headers['x-access-token'], config['JWT']
-                           ['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
+                jwt.decode(headers['x-access-token'], config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
             except jwt.exceptions.DecodeError:
                 return jsonify({'status': False, 'message': 'Invalid client token'}), 400
             except jwt.exceptions.ExpiredSignature:
-                return jsonify({'status': False, 'message': 'Token has expired'}), 400
+                return jsonify({'status' : False, 'message':'Token has expired'}), 400
 
         _UUID = str(uuid.uuid4())
         currDate = datetime.datetime.now()
-        player = {'uuid': _UUID, 'name': data['name'], 'nick': data['nick'], 'email': data['email'], 'picture': data['picture'], 'mobile': data['mobile'], 'position': data['position'],
-                  'description': data['description'], 'actualTeam': data['teamId'], 'parentId': data['parentId'], 'createdAt': str(currDate), 'modifiedAt': str(currDate)}
-
+        player = {'uuid': _UUID, 'name': data['name'], 'nick': data['nick'], 'email': data['email'], 'picture': data['picture'], 'mobile': data['mobile'], 'position': data['position'], 'description': data['description'], 'actualTeam': data['teamId'], 'parentId': data['parentId'], 'createdAt': str(currDate), 'modifiedAt': str(currDate)}
         if db.insertIntoCollection("players", player):
             return jsonify({'status': True, 'playerId': _UUID}), 201
         else:
@@ -115,17 +108,15 @@ def addSeason():
     if auth.authenticate_client(headers['clientID'], headers['apiKey']):
         if config['GENERAL']['authentication'] == "ON":
             try:
-                jwt.decode(headers['x-access-token'], config['JWT']
-                           ['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
+                jwt.decode(headers['x-access-token'], config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
             except jwt.exceptions.DecodeError:
-                return jsonify({'status': False, 'message': 'Invalid client token'}), 400
+                return jsonify({'status': False, 'message':'Invalid client token'}), 400
             except jwt.exceptions.ExpiredSignature:
                 return jsonify({'status': False, 'message': 'Token has expired'}), 400
 
         _UUID = str(uuid.uuid4())
         currDate = datetime.datetime.now()
-        season = {'uuid': _UUID, 'name': data['name'], 'createdAt': str(
-            currDate), 'modifiedAt': str(currDate)}
+        season = {'uuid': _UUID, 'name': data['name'], 'createdAt': str(currDate), 'modifiedAt': str(currDate)}
 
         if db.insertIntoCollection("seasons", season):
             return jsonify({'status': True, 'seasonId': _UUID}), 201
@@ -146,8 +137,7 @@ def addGame():
     if auth.authenticate_client(headers['clientID'], headers['apiKey']):
         if config['GENERAL']['authentication'] == "ON":
             try:
-                jwt.decode(headers['x-access-token'], config['JWT']
-                           ['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
+                jwt.decode(headers['x-access-token'], config['JWT']['JWT_SECRET'], config['JWT']['JWT_ALGORITHM'])
             except jwt.exceptions.DecodeError:
                 return jsonify({'status': False, 'message': 'Invalid client token'}), 400
             except jwt.exceptions.ExpiredSignature:

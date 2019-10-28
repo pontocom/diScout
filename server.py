@@ -3,6 +3,7 @@ from flask import (
     render_template,
     Blueprint
 )
+from flask_cors import CORS
 import clientAPI as client_api
 import adminAPI as admin_api
 from flasgger import Swagger
@@ -32,6 +33,7 @@ template = {
 
 # Create the application instance
 app = Flask(__name__, template_folder="templates")
+CORS(app)
 Swagger(app, template=template)
 
 
@@ -62,3 +64,4 @@ def home():
 # If we're running in stand alone mode, run the application
 if __name__ == '__main__':
     app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

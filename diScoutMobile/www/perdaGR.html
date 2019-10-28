@@ -28,80 +28,72 @@
           <div class="pull-left">
             <button
               onclick="addEvent(this)"
-              id="FaltaSofrida"
+              id="InterrupcaoPerdaGR"
               style="width: 200px; margin-right: 10px;"
               class="bg-success "
             >
-              Falta Sofrida
+              Interrupção
             </button>
           </div>
           <div class="">
             <button
               onclick="addEvent(this)"
-              id="LançamentoFavor"
+              id="RecuperacaoGR"
               style="width: 200px; margin-right: 10px;"
               class="bg-success"
             >
-              Lançamento a Favor
+              Recuperação da Bola
             </button>
           </div>
-         <!-- <div class="">
-            <button
-              onclick="addEvent(this)"
-              id="PontapeBalizaFavor"
-              style="width: 200px; margin-right: 10px;"
-              class="bg-success"
-            >
-              Pontapé de Baliza a Favor
-            </button>
-          </div> -->
         </div>
         <div class="col-sm-12">
-          <div class="pull-left">
-            <button
-              onclick="addEvent(this)"
-              id="FaltaCometida"
-              style="width: 200px; margin-right: 10px;"
-              class="bg-success"
-            >
-              Falta Cometida
-            </button>
+            <div class="pull-left">
+              <button
+                onclick="addEvent(this)"
+                id="InterrupcaoGR"
+                style="width: 200px; margin-right: 10px;"
+                class="bg-success"
+                disabled="true"
+              >
+                Bloqueado
+              </button>
+            </div>
+            <div class="">
+              <button
+                onclick="addEvent(this)"
+                id="Defesa"
+                style="width: 200px; margin-right: 10px;"
+                class="bg-success"
+              >
+                Defesa
+              </button>
+            </div>
           </div>
-        <div class="">
-            <button
-              onclick="addEvent(this)"
-              id="LançamentoContra"
-              style="width: 200px; margin-right: 10px;"
-              class="bg-success"
-              disabled = true
-            >
-            Bloqueado
-            </button>
-        <!--  </div>
-          <div class="">
-            <button
-              onclick="addEvent(this)"
-              id="PontapeBalizaEquipaAdversaria"
-              style="width: 200px; margin-right: 10px;"
-              class="bg-success"
-            >
-              Pontapé de Baliza para Equipa Adversária
-            </button>
-           
-          </div> -->
-        </div>
       </div>
-    </div>
-    <div class="retroceder">
-      <button
-        type="submit"
-        style="width: 100px; margin-right: 10px;"
-        class="btn btn-danger"
-        id="retroceder"
-        onclick="retroceder()"
-      >
-        Retroceder
-      </button>
+
+      <div class="estado_equipa">
+        <button
+          type="submit"
+          style="width: 125px; margin-left: 10px;"
+          class="btn btn-danger"
+          id="equipaRecuperouBolaGR"
+          onclick="addEvent(this)"
+        >
+        Equipa Recuperou a Bola
+        </button>
+      </div>
+
+      <div class="retroceder">
+        <button
+          type="submit"
+          style="width: 100px; margin-right: 10px;"
+          class="btn btn-danger"
+          id="retroceder"
+          onclick="retroceder()"
+        >
+          Retroceder
+        </button>
+      </div>
     </div>
     <p></p>
     <div align="center">

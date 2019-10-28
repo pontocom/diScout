@@ -45,11 +45,11 @@ function selectPlayer(select) {
 
   function confirmPlayer() {
     var ps1 = document.getElementById("ps1");
- 
+    
       var selectedPlayer =  ps1.options[ps1.selectedIndex].text;
       
       localStorage.setItem("followPlayer", selectedPlayer);
-      //localStorage.setItem("players", selectedPlayerId);
+    
      
       var player = localStorage.getItem("followPlayer");
       var players = JSON.parse(localStorage.getItem("players"));
@@ -57,7 +57,7 @@ function selectPlayer(select) {
       for (var i = 0; i < players.length; i++) {
         if (player == players[i].name) {
           localStorage.setItem("idPlayer", players[i].uuid);
-          localStorage.setItem("position", players[i].position);
+          localStorage.setItem("description", players[i].description);
         }
       }
 

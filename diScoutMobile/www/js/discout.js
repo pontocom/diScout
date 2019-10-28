@@ -12,7 +12,7 @@ function addEvent(event) {
     userID: user,
     appID: 1,
     timestamp: new Date(),
-    gameID: "bbdc55d6-0b4f-4065-a6e8-0712b8028a60",
+    gameID: "d5b180d0-e4a5-4c58-8ac8-613c297dfbf5",
     playerID: playerId,
     event: event.id
   };
@@ -22,15 +22,30 @@ function addEvent(event) {
     type: "POST",
     data: body,
     success: function(result) {
-      var position = localStorage.getItem("position");
+      var description = localStorage.getItem("description");
       //alert(JSON.stringify(result));
       eventId = event.id;
       if (eventId) {
         switch (eventId) {
           case "Passe":
-            localStorage.setItem("buttonId", "Passe");
-            window.location.replace("discout.html");
-            break;
+              if (
+                description == "GR" ||
+                description == "Gr" ||
+                description == "gr" ||
+                description == "gR" ||
+                description == "GK" ||
+                description == "Gk" ||
+                description == "gk" ||
+                description == "gK"
+              ) {
+                localStorage.setItem("buttonId", "Passe");
+                window.location.replace("discoutGR.html");
+                break;
+              } else {
+                localStorage.setItem("buttonId", "Passe");
+                window.location.replace("discout.html");
+                break;
+              } 
           case "Remate":
             localStorage.setItem("buttonId", "Remate");
             window.location.replace("remate.html");
@@ -47,41 +62,50 @@ function addEvent(event) {
             localStorage.setItem("buttonId", "InterrupcaoPerda");
             window.location.replace("interrupcao.html");
             break;
-          case "Recuperacao":
-            if (
-              position == "GR" ||
-              position == "Gr" ||
-              position == "gr" ||
-              position == "gR" ||
-              position == "GK" ||
-              position == "Gk" ||
-              position == "gk" ||
-              position == "gK"
-            ) {
-              localStorage.setItem("buttonId", "Recuperacao");
-              window.location.replace("discoutGR.html");
-              break;
-            } else {
-              localStorage.setItem("buttonId", "Recuperacao");
-              window.location.replace("discout.html");
-              break;
-            }
-          case "ParaFora":
-            localStorage.setItem("buttonId", "ParaFora");
-            window.location.replace("perda.html");
+          case "InterrupcaoPerdaGR":
+            localStorage.setItem("buttonId", "InterrupcaoPerdaGR");
+            window.location.replace("interrupcaoGR.html");
             break;
+          case "RecuperacaoGR":
+            localStorage.setItem("buttonId", "RecuperacaoGR");
+            window.location.replace("discoutGR.html");
+            break;
+          case "Recuperacao":
+            localStorage.setItem("buttonId", "Recuperacao");
+            window.location.replace("discout.html");
+            break;
+
+          case "ParaFora":
+              if (
+                description == "GR" ||
+                description == "Gr" ||
+                description == "gr" ||
+                description == "gR" ||
+                description == "GK" ||
+                description == "Gk" ||
+                description == "gk" ||
+                description == "gK"
+              ) {
+                localStorage.setItem("buttonId", "ParaFora");
+                window.location.replace("perdaGR.html");
+                break;
+              } else {
+                localStorage.setItem("buttonId", "ParaFora");
+                window.location.replace("perda.html");
+                break;
+              } 
           case "FaltaSofrida":
             if (
-              position == "GR" ||
-              position == "Gr" ||
-              position == "gr" ||
-              position == "gR" ||
-              position == "GK" ||
-              position == "Gk" ||
-              position == "gk" ||
-              position == "gK"
+              description == "GR" ||
+              description == "Gr" ||
+              description == "gr" ||
+              description == "gR" ||
+              description == "GK" ||
+              description == "Gk" ||
+              description == "gk" ||
+              description == "gK"
             ) {
-              localStorage.setItem("buttonId", "FaltaSofrida");
+              localStorage.setItem("buttonId", "FaltaSofridaGR");
               window.location.replace("discoutGR.html");
               break;
             } else {
@@ -91,14 +115,14 @@ function addEvent(event) {
             }
           case "LançamentoFavor":
             if (
-              position == "GR" ||
-              position == "Gr" ||
-              position == "gr" ||
-              position == "gR" ||
-              position == "GK" ||
-              position == "Gk" ||
-              position == "gk" ||
-              position == "gK"
+              description == "GR" ||
+              description == "Gr" ||
+              description == "gr" ||
+              description == "gR" ||
+              description == "GK" ||
+              description == "Gk" ||
+              description == "gk" ||
+              description == "gK"
             ) {
               localStorage.setItem("buttonId", "LançamentoFavor");
               window.location.replace("discoutGR.html");
@@ -111,14 +135,14 @@ function addEvent(event) {
 
           case "PontapeBalizaFavor":
             if (
-              position == "GR" ||
-              position == "Gr" ||
-              position == "gr" ||
-              position == "gR" ||
-              position == "GK" ||
-              position == "Gk" ||
-              position == "gk" ||
-              position == "gK"
+              description == "GR" ||
+              description == "Gr" ||
+              description == "gr" ||
+              description == "gR" ||
+              description == "GK" ||
+              description == "Gk" ||
+              description == "gk" ||
+              description == "gK"
             ) {
               localStorage.setItem("buttonId", "PontapeBalizaFavor");
               window.location.replace("discoutGR.html");
@@ -131,17 +155,17 @@ function addEvent(event) {
 
           case "FaltaCometida":
             if (
-              position == "GR" ||
-              position == "Gr" ||
-              position == "gr" ||
-              position == "gR" ||
-              position == "GK" ||
-              position == "Gk" ||
-              position == "gk" ||
-              position == "gK"
+              description == "GR" ||
+              description == "Gr" ||
+              description == "gr" ||
+              description == "gR" ||
+              description == "GK" ||
+              description == "Gk" ||
+              description == "gk" ||
+              description == "gK"
             ) {
-              localStorage.setItem("buttonId", "FaltaCometida");
-              window.location.replace("perda.html");
+              localStorage.setItem("buttonId", "FaltaCometidaGR");
+              window.location.replace("perdaGR.html");
               break;
             } else {
               localStorage.setItem("buttonId", "FaltaCometida");
@@ -151,14 +175,14 @@ function addEvent(event) {
 
           case "LançamentoContra":
             if (
-              position == "GR" ||
-              position == "Gr" ||
-              position == "gr" ||
-              position == "gR" ||
-              position == "GK" ||
-              position == "Gk" ||
-              position == "gk" ||
-              position == "gK"
+              description == "GR" ||
+              description == "Gr" ||
+              description == "gr" ||
+              description == "gR" ||
+              description == "GK" ||
+              description == "Gk" ||
+              description == "gk" ||
+              description == "gK"
             ) {
               localStorage.setItem("buttonId", "LançamentoContra");
               window.location.replace("perda.html");
@@ -171,14 +195,14 @@ function addEvent(event) {
 
           case "PontapeBalizaEquipaAdversaria":
             if (
-              position == "GR" ||
-              position == "Gr" ||
-              position == "gr" ||
-              position == "gR" ||
-              position == "GK" ||
-              position == "Gk" ||
-              position == "gk" ||
-              position == "gK"
+              description == "GR" ||
+              description == "Gr" ||
+              description == "gr" ||
+              description == "gR" ||
+              description == "GK" ||
+              description == "Gk" ||
+              description == "gk" ||
+              description == "gK"
             ) {
               localStorage.setItem("buttonId", "PontapeBalizaEquipaAdversaria");
               window.location.replace("perda.html");
@@ -195,11 +219,11 @@ function addEvent(event) {
             break;
           case "PerdaGR":
             localStorage.setItem("buttonId", "PerdaGR");
-            window.location.replace("perda.html");
+            window.location.replace("perdaGR.html");
             break;
           case "InterrupcaoGR":
             localStorage.setItem("buttonId", "InterrupcaoGR");
-            window.location.replace("interrupcao.html");
+            window.location.replace("interrupcaoGR.html");
             break;
           case "Defesa":
             localStorage.setItem("buttonId", "Defesa");
@@ -219,11 +243,11 @@ function addEvent(event) {
             break;
           case "BolaNaEquipaAdversaria":
             localStorage.setItem("buttonId", "BolaNaEquipaAdversaria");
-            window.location.replace("perda.html");
+            window.location.replace("perdaGR.html");
             break;
           case "InterrupcaoNaoAgarrar":
             localStorage.setItem("buttonId", "InterrupcaoNaoAgarrar");
-            window.location.replace("interrupcao.html");
+            window.location.replace("interrupcaoGR.html");
             break;
           case "PasseGR":
             localStorage.setItem("buttonId", "PasseGR");
@@ -232,6 +256,22 @@ function addEvent(event) {
           case "RemateGR":
             localStorage.setItem("buttonId", "RemateGR");
             window.location.replace("remate.html");
+            break;
+          case "equipaPerdeuBola":
+            localStorage.setItem("buttonId", "equipaPerdeuBola");
+            window.location.replace("perda.html");
+            break;
+          case "equipaPerdeuBolaGR":
+            localStorage.setItem("buttonId", "equipaPerdeuBolaGR");
+            window.location.replace("perdaGR.html");
+            break;
+          case "equipaRecuperouBola":
+            localStorage.setItem("buttonId", "equipaRecuperouBola");
+            window.location.replace("discout.html");
+            break;
+          case "equipaRecuperouBolaGR":
+            localStorage.setItem("buttonId", "equipaRecuperouBolaGR");
+            window.location.replace("discoutGR.html");
             break;
         }
       }
@@ -263,24 +303,58 @@ function retroceder() {
     case "InterrupcaoPerda":
       window.location.replace("perda.html");
       break;
+    case "InterrupcaoPerdaGR":
+      window.location.replace("perdaGR.html");
+      break;
     case "Recuperacao":
       window.location.replace("perda.html");
+      break;
+    case "RecuperacaoGR":
+      window.location.replace("perdaGR.html");
       break;
     case "ParaFora":
       window.location.replace("remate.html");
       break;
     case "FaltaSofrida":
-      window.location.replace("interrupcao.html");
-      break;
+      if (
+        description == "GR" ||
+        description == "Gr" ||
+        description == "gr" ||
+        description == "gR" ||
+        description == "GK" ||
+        description == "Gk" ||
+        description == "gk" ||
+        description == "gK"
+      ) {
+        window.location.replace("interrupcaoGR.html");
+        break;
+      } else {
+        window.location.replace("interrupcao.html");
+        break;
+      }
     case "LançamentoFavor":
       window.location.replace("interrupcao.html");
       break;
     case "PontapeBalizaFavor":
-      window.location.replace("interrupcao.html");
+      window.location.replace("interrupcaoGR.html");
       break;
     case "FaltaCometida":
-      window.location.replace("interrupcao.html");
-      break;
+      if (
+        description == "GR" ||
+        description == "Gr" ||
+        description == "gr" ||
+        description == "gR" ||
+        description == "GK" ||
+        description == "Gk" ||
+        description == "gk" ||
+        description == "gK"
+      ) {
+        window.location.replace("interrupcaoGR.html");
+        break;
+      } else {
+        window.location.replace("interrupcao.html");
+        break;
+      }
     case "LançamentoContra":
       window.location.replace("interrupcao.html");
       break;
@@ -297,7 +371,7 @@ function retroceder() {
       window.location.replace("discoutGR.html");
       break;
     case "Defesa":
-      window.location.replace("discoutGR.html");
+      window.location.replace("perdaGR.html");
       break;
     case "Agarrou":
       window.location.replace("defesa.html");
@@ -320,9 +394,25 @@ function retroceder() {
     case "RemateGR":
       window.location.replace("discoutGR.html");
       break;
+    case "equipaPerdeuBola":
+      window.location.replace("discout.html");
+      break;
+    case "equipaPerdeuBolaGR":
+      window.location.replace("discoutGR.html");
+      break;
+    case "equipaRecuperouBola":
+      window.location.replace("perda.html");
+      break;
+    case "equipaRecuperouBolaGR":
+      window.location.replace("perdaGR.html");
+      break;
   }
 }
 
 function terminar_jogo() {
+  window.location.replace("perfilPlayer.html");
+}
+
+function equipaPerdeuBola() {
   window.location.replace("perfilPlayer.html");
 }

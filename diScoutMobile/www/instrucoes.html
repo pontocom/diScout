@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"
+    />
+    <title>Discout</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/discout.css" />
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="js/discout.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="js/perfilPlayer.js"></script>
+    ~
+    <script type="text/javascript" src="js/stats.js"></script>
+  </head>
+  <body
+    style="background: url(https://ae01.alicdn.com/kf/HTB1SajMSpXXXXc8XVXXq6xXFXXXz/8x8FT-Spots-Luz-Night-Time-de-Futebol-Campo-de-Futebol-Est-dio-Plataforma-Sob-Encomenda-Da.jpg_640x640.jpg); background-size: cover"
+    onload="loadPlayer()"
+    ;
+  >
+    
+      <div align ="center" class="main">
+        <h1> Instruções </h1>
+      </div>
+      <p style="margin-left:2.5em">
+        <font  color="white">
+            Esta aplicação serve para registar as ações efetuadas pelo jogador que observará, já que
+            esses eventos registados serão armazenados numa base de dados, para que sejam consultados no futuro
+            por qualquer pessoa.
+        </font>
+    </p>
+      <p style="margin-left:2.5em">
+          <font  color="white">
+              <b> Botão "Interrupção" -</b> este botão é para ser clicado quando o jogo estiver parado, para que 
+              o utilizador tenha tempo de registar o evento efetuado pelo jogador que está a observar.
+          </font>
+      </p>
+      <p style="margin-left:2.5em">
+        <font  color="white">
+            <b> Botão "Perda de Bola" -</b> este botão é para ser clicado quando o jogador que 
+            está a observar perder a bola.
+        </font>
+    </p>
+    <p style="margin-left:2.5em">
+        <font  color="white">
+            <b> Botão "Recuperação de Bola" -</b> este botão é para ser clicado quando o jogador que 
+            está a observar recuperar a bola.
+        </font>
+    </p>
+    
+    <p style="margin-left:2.5em">
+      <font  color="white">
+          <b> Botão "Equipa Perdeu a Bola" -</b> este botão é para ser clicado quando a equipa do jogador que 
+          está a observar perder a bola. 
+      </font>
+  </p>
+  <p style="margin-left:2.5em">
+    <font  color="white">
+        <b> Botão "Equipa Recuperou a Bola" -</b> este botão é para ser clicado quando a equipa do jogador que 
+        está a observar recuperar a bola. 
+    </font>
+</p>
+
+    <div class="retroceder">
+      <button
+        type="submit"
+        style="width: 100px; margin-right: 10px;"
+        class="btn btn-danger"
+        id="retroceder"
+        onclick="retro_perfilPlayer()"
+      >
+        Retroceder
+      </button>
+    
+  </body>
+</html>

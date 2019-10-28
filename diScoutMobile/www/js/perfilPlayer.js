@@ -5,24 +5,26 @@ function loadPlayer() {
 
 function registarAction() {
   localStorage.removeItem("buttonId");
-  var position = localStorage.getItem("position");
+  var description = localStorage.getItem("description");
 
   if (
-    position == "GR" ||
-    position == "Gr" ||
-    position == "gr" ||
-    position == "gR" ||
-    position == "GK" ||
-    position == "Gk" ||
-    position == "gk" ||
-    position == "gK"
+    description == "GR" ||
+    description == "Gr" ||
+    description == "gr" ||
+    description == "gR" ||
+    description == "GK" ||
+    description == "Gk" ||
+    description == "gk" ||
+    description == "gK"
   ) {
     window.location.replace("discoutGR.html");
   } else {
     window.location.replace("discout.html");
   }
 }
-
+function instrucoes() {
+  window.location.replace("instrucoes.html");
+}
 function seeStats() {
   window.location.replace("stats.html");
 }

@@ -95,7 +95,7 @@ function login() {
       getUser();
     },
     error: function(result) {
-      alert(JSON.stringify(result));
+      alert("Username ou password incorretos. / Não tem registo criado na aplicação.");
     }
   });
 }

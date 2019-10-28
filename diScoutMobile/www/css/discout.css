@@ -35,6 +35,18 @@
 
 }
 
+.estado_equipa {
+
+  padding: 30px;
+  display:block;
+  color: white;
+  text-align:center;
+  position: absolute;
+  top: -23px;
+  left: -35px;
+
+}
+
 .navbar li {
   color: white;
 }
